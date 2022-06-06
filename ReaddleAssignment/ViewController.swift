@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = FileExplorerLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(FileIcon.self, forCellWithReuseIdentifier: "icon")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -33,7 +34,6 @@ class ViewController: UIViewController {
     
     private func setUpCollectionView() {
         view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
