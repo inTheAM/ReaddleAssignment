@@ -21,6 +21,13 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var switchLayoutButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "list.bullet"), for: .normal)
+        button.addTarget(self, action: #selector(switchLayout), for: .touchUpInside)
+        button.frame = .init(x: 0, y: 0, width: 40, height: 40)
+        return button
+    }()
     
     override func loadView() {
         view = UIView()
@@ -29,6 +36,7 @@ class ViewController: UIViewController {
         navigationItem.title = navigationTitle
         
         setUpCollectionView()
+        setUpNavigationButtons()
     }
     
     override func viewDidLoad() {
@@ -44,6 +52,27 @@ class ViewController: UIViewController {
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    }
+    
+    private func setUpNavigationButtons() {
+        let button = UIBarButtonItem(customView: switchLayoutButton)
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    /// Toggles the collection view layout between list and grid views
+    @objc private func switchLayout() {
+        let layout = FileExplorerLayout()
+        switch FileExplorerLayout.layoutType {
+        case .grid:
+            FileExplorerLayout.layoutType = .list
+            switchLayoutButton.setImage(UIImage(systemName: "square.grid.2x2"), for: .normal)
+        default:
+            FileExplorerLayout.layoutType = .grid
+            switchLayoutButton.setImage(UIImage(systemName: "list.bullet"), for: .normal)
+        }
+        
+        collectionView.reloadData()
+        self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
 }
 

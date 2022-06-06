@@ -24,7 +24,7 @@ final class FileIcon: UICollectionViewCell {
     private let imageInsets = UIEdgeInsets(top: -8, left: -8, bottom: -8, right: -8)
     
     /// The image view for the icon.
-    let imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
@@ -32,7 +32,7 @@ final class FileIcon: UICollectionViewCell {
     }()
     
     /// The file-name label
-    let nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .label
@@ -46,7 +46,7 @@ final class FileIcon: UICollectionViewCell {
     
     /// The UIView containing the label.
     /// Used to create padding around the text.
-    let labelView: UIView = {
+    private lazy var labelView: UIView = {
         return UIView()
     }()
     
@@ -57,13 +57,12 @@ final class FileIcon: UICollectionViewCell {
     ///   - image: The system image name to display as an icon.
     func configure(axis: NSLayoutConstraint.Axis, image: String) {
         // Creating the stack view
-        let stackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.axis = axis
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.2).cgColor
-            return stackView
-        }()
+        let stackView = UIStackView()
+        stackView.axis = axis
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.2).cgColor
+        
+        #warning("FIX ACCUMULATING BACKGROUND COLOR")
         
         // Setting the image on the image view and adding padding
         imageView.image = UIImage(systemName: image)?.withAlignmentRectInsets(imageInsets)
