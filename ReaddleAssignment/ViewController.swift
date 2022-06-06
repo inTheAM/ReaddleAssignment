@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     private let navigationTitle = "Readdle"
+    
+    /// The data source and delegate for the collection view
+    private let viewModel = ViewModel()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = FileExplorerLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -34,6 +38,8 @@ class ViewController: UIViewController {
     
     private func setUpCollectionView() {
         view.addSubview(collectionView)
+        collectionView.delegate = viewModel
+        collectionView.dataSource = viewModel
         collectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true

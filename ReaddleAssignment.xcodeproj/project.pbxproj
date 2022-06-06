@@ -17,6 +17,7 @@
 		E2D03040284DC19A00E6247E /* ReaddleAssignmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0303F284DC19A00E6247E /* ReaddleAssignmentUITestsLaunchTests.swift */; };
 		E2D0304D284E8AF000E6247E /* FileExplorerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0304C284E8AF000E6247E /* FileExplorerLayout.swift */; };
 		E2D0304F284E906200E6247E /* FileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0304E284E906200E6247E /* FileIcon.swift */; };
+		E2D03051284E946C00E6247E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03050284E946C00E6247E /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		E2D0303F284DC19A00E6247E /* ReaddleAssignmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaddleAssignmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E2D0304C284E8AF000E6247E /* FileExplorerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExplorerLayout.swift; sourceTree = "<group>"; };
 		E2D0304E284E906200E6247E /* FileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIcon.swift; sourceTree = "<group>"; };
+		E2D03050284E946C00E6247E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				E2D0301C284DC19600E6247E /* AppDelegate.swift */,
 				E2D0301E284DC19600E6247E /* SceneDelegate.swift */,
 				E2D03020284DC19600E6247E /* ViewController.swift */,
+				E2D03050284E946C00E6247E /* ViewModel.swift */,
 				E2D0304E284E906200E6247E /* FileIcon.swift */,
 				E2D0304C284E8AF000E6247E /* FileExplorerLayout.swift */,
 				E2D03025284DC19900E6247E /* Assets.xcassets */,
@@ -264,6 +267,7 @@
 				E2D0301D284DC19600E6247E /* AppDelegate.swift in Sources */,
 				E2D0304F284E906200E6247E /* FileIcon.swift in Sources */,
 				E2D0304D284E8AF000E6247E /* FileExplorerLayout.swift in Sources */,
+				E2D03051284E946C00E6247E /* ViewModel.swift in Sources */,
 				E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
