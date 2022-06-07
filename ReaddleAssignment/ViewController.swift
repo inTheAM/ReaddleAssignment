@@ -8,35 +8,71 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private let navigationTitle = "Readdle"
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: view.bounds)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+    /// The data source and delegate for the collection view
+    private let viewModel = ViewModel()
+    
+    private lazy var collectionView: UICollectionView = {
+        let layout = FileExplorerLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(FileIcon.self, forCellWithReuseIdentifier: "icon")
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
+    private lazy var switchLayoutButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "list.bullet"), for: .normal)
+        button.addTarget(self, action: #selector(switchLayout), for: .touchUpInside)
+        button.frame = .init(x: 0, y: 0, width: 40, height: 40)
+        return button
     }()
     
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Readdle"
-    
-        setUpTableView()
+        navigationItem.title = navigationTitle
+        
+        setUpCollectionView()
+        setUpNavigationButtons()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
-
-    private func setUpTableView() {
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    
+    private func setUpCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.delegate = viewModel
+        collectionView.dataSource = viewModel
+        collectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    }
+    
+    private func setUpNavigationButtons() {
+        let button = UIBarButtonItem(customView: switchLayoutButton)
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    /// Toggles the collection view layout between list and grid views
+    @objc private func switchLayout() {
+        let layout = FileExplorerLayout()
+        switch FileExplorerLayout.layoutType {
+        case .grid:
+            FileExplorerLayout.layoutType = .list
+            switchLayoutButton.setImage(UIImage(systemName: "square.grid.2x2"), for: .normal)
+        default:
+            FileExplorerLayout.layoutType = .grid
+            switchLayoutButton.setImage(UIImage(systemName: "list.bullet"), for: .normal)
+        }
+        
+        collectionView.reloadData()
+        self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
 }
 
