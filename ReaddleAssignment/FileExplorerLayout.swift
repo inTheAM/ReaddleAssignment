@@ -55,7 +55,7 @@ final class FileExplorerLayout: UICollectionViewFlowLayout {
         
         let numberOfColumns: Int = Self.layoutType == .grid ? 3 : 1
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
-        let columnHeight: CGFloat = Self.layoutType == .grid ? columnWidth+60 : 60
+        let columnHeight: CGFloat = Self.layoutType == .grid ? columnWidth+48 : 60
         
         
         var xOffsets: [CGFloat] = []
@@ -83,8 +83,8 @@ final class FileExplorerLayout: UICollectionViewFlowLayout {
             self.attributes.append(attributes)
             
             // Setting vertical offset for each row and content height for the collection view
-            yOffsets[column] = yOffsets[column] + columnHeight
             contentHeight = frame.maxY
+            yOffsets[column] = yOffsets[column] + columnHeight
             
             // Updating current column
             column = column < (numberOfColumns - 1) ? (column + 1) : 0
