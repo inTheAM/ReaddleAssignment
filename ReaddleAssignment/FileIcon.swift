@@ -37,7 +37,7 @@ final class FileIcon: UICollectionViewCell {
         addSubview(stackView)
         isAccessibilityElement = true
         accessibilityLabel = nameLabel.text
-        accessibilityIdentifier = "file-icon"
+        accessibilityIdentifier = "file-icon-vertical"
     }
     
     /// The padding around the image in the icon
@@ -108,8 +108,10 @@ final class FileIcon: UICollectionViewCell {
         switch axis {
         case .horizontal:
             nameLabel.textAlignment = .left
+            self.accessibilityIdentifier = "file-icon-horizontal"
         default:
             nameLabel.textAlignment = .center
+            self.accessibilityIdentifier = "file-icon-vertical"
         }
     }
     
