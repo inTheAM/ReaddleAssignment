@@ -44,7 +44,7 @@ final class FileExplorerLayout: UICollectionViewFlowLayout {
     
     /// The content size of the collection view using this layout.
     override var collectionViewContentSize: CGSize {
-        return CGSize(width: contentWidth, height: contentHeight)
+        return CGSize(width: contentWidth, height: contentHeight ?? 0)
     }
     
     /// Creates the layout of collection view cells based on layout type and content size.
