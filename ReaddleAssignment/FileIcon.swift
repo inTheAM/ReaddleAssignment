@@ -35,6 +35,9 @@ final class FileIcon: UICollectionViewCell {
         
         // Adding the stack view to the main view
         addSubview(stackView)
+        isAccessibilityElement = true
+        accessibilityLabel = nameLabel.text
+        accessibilityIdentifier = "file-icon"
     }
     
     /// The padding around the image in the icon
@@ -45,6 +48,8 @@ final class FileIcon: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.isAccessibilityElement = false
+        imageView.accessibilityIdentifier = "file-image"
         return imageView
     }()
     
@@ -53,11 +58,12 @@ final class FileIcon: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .label
-        label.text = "slnadl ksndladlknaskldnsal.pdf"
         label.allowsDefaultTighteningForTruncation = true
         label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingMiddle
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isAccessibilityElement = false
+        label.accessibilityIdentifier = "file-label"
         return label
     }()
     
@@ -76,6 +82,7 @@ final class FileIcon: UICollectionViewCell {
         stackView.layer.cornerRadius = 16
         stackView.layer.masksToBounds = true
         stackView.distribution = .fillProportionally
+        stackView.accessibilityIdentifier = "file-stackview"
         return stackView
     }()
     
@@ -83,13 +90,15 @@ final class FileIcon: UICollectionViewCell {
     /// - Parameters:
     ///   - axis: The axis to set for the stack view in the view.
     ///   - image: The system image name to display as an icon.
-    func configure(axis: NSLayoutConstraint.Axis, image: String) {
+    func configure(axis: NSLayoutConstraint.Axis, image: String, name: String) {
         stackView.axis = axis
         
         // Setting the image on the image view and adding padding
         let configuration = UIImage.SymbolConfiguration(weight: .thin)
         imageView.image = UIImage(systemName: image, withConfiguration: configuration)?.withAlignmentRectInsets(imageInsets)
         
+        // Setting the file name on the label
+        nameLabel.text = name
         // Constraining the stack view within the view.
         stackView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         stackView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
