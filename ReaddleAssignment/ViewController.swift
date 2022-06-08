@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(FileIcon.self, forCellWithReuseIdentifier: "icon")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.accessibilityIdentifier = "files-collection-view"
         return collectionView
     }()
     
@@ -26,6 +27,8 @@ class ViewController: UIViewController {
         button.setImage(UIImage(systemName: "list.bullet"), for: .normal)
         button.addTarget(self, action: #selector(switchLayout), for: .touchUpInside)
         button.frame = .init(x: 0, y: 0, width: 40, height: 40)
+        button.accessibilityLabel = "Switch layout from grid to list"
+        button.accessibilityIdentifier = "switch-layout-button"
         return button
     }()
     
@@ -41,7 +44,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    private func updateAccessibilityLabels() {
+        switchLayoutButton.accessibilityLabel = "Switch layout from " + (FileExplorerLayout.layoutType == .grid ? "grid to list" : "list to grid")
     }
     
     private func setUpCollectionView() {
@@ -59,7 +65,7 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItem = button
     }
     
-    /// Toggles the collection view layout between list and grid views
+    /// Toggles the collection view layout between grid and list views
     @objc private func switchLayout() {
         let layout = FileExplorerLayout()
         switch FileExplorerLayout.layoutType {
@@ -70,8 +76,9 @@ class ViewController: UIViewController {
             FileExplorerLayout.layoutType = .grid
             switchLayoutButton.setImage(UIImage(systemName: "list.bullet"), for: .normal)
         }
-        
         collectionView.reloadData()
+        
+        updateAccessibilityLabels()
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
 }
