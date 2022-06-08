@@ -28,7 +28,7 @@ class ReaddleAssignmentUITests: XCTestCase {
         let header = app.navigationBars["Readdle"]
         let layoutToggle = app.navigationBars.buttons["toggle-list-button"]
         let collectionView = app.collectionViews["files-collection-view"]
-        let mockFileIcon = app.cells["file-icon"]
+        let fileIcon = app.cells["file-icon-vertical"]
         let iconImage = app.images["file-image"]
         let filename = app.staticTexts["file.pdf"]
         
@@ -36,7 +36,7 @@ class ReaddleAssignmentUITests: XCTestCase {
         XCTAssert(header.waitForExistence(timeout: 5))
         XCTAssert(layoutToggle.waitForExistence(timeout: 5))
         XCTAssert(collectionView.waitForExistence(timeout: 5))
-        XCTAssert(mockFileIcon.waitForExistence(timeout: 5))
+        XCTAssert(fileIcon.waitForExistence(timeout: 5))
         XCTAssert(iconImage.waitForExistence(timeout: 5))
         XCTAssert(filename.waitForExistence(timeout: 5))
     }
@@ -53,5 +53,26 @@ class ReaddleAssignmentUITests: XCTestCase {
         gridToggle.tap()
         XCTAssertFalse(gridToggle.exists)
         XCTAssert(listToggle.waitForExistence(timeout: 5))
+    }
+    
+    func testSwitchingLayoutChangesCollectionViewLayout() throws {
+        let listToggle = app.navigationBars.buttons["toggle-list-button"]
+        _ = listToggle.waitForExistence(timeout: 5)
+        
+        let vFileIcon = app.cells["file-icon-vertical"]
+        XCTAssert(vFileIcon.waitForExistence(timeout: 5))
+        listToggle.tap()
+        XCTAssertFalse(vFileIcon.exists)
+        
+        let hFileIcon = app.cells["file-icon-horizontal"]
+        XCTAssert(hFileIcon.waitForExistence(timeout: 5))
+        
+        
+        let gridToggle = app.navigationBars.buttons["toggle-grid-button"]
+        _ = gridToggle.waitForExistence(timeout: 5)
+        gridToggle.tap()
+        
+        XCTAssertFalse(hFileIcon.exists)
+        XCTAssert(vFileIcon.waitForExistence(timeout: 5))
     }
 }
