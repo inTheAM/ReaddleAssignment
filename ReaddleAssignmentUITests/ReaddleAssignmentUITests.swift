@@ -13,9 +13,7 @@ class ReaddleAssignmentUITests: XCTestCase {
     
     override func setUpWithError() throws {
         continueAfterFailure = false
-
         app.launchArguments = ["MockData"]
-        
         app.launch()
     }
 
