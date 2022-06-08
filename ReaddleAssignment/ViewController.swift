@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(switchLayout), for: .touchUpInside)
         button.frame = .init(x: 0, y: 0, width: 40, height: 40)
         button.accessibilityLabel = "Switch layout from grid to list"
-        button.accessibilityIdentifier = "switch-layout-button"
+        button.accessibilityIdentifier = "toggle-list-button"
         return button
     }()
     
@@ -48,6 +48,7 @@ class ViewController: UIViewController {
     
     private func updateAccessibilityLabels() {
         switchLayoutButton.accessibilityLabel = "Switch layout from " + (FileExplorerLayout.layoutType == .grid ? "grid to list" : "list to grid")
+        switchLayoutButton.accessibilityIdentifier = "toggle-" + (FileExplorerLayout.layoutType == .grid ? "list" : "grid") + "-button"
     }
     
     private func setUpCollectionView() {
