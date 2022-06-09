@@ -8,7 +8,7 @@
 import Combine
 import UIKit
 
-extension ViewController {
+extension FilesViewController {
     final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
         private let service = GoogleSheetsService()
         private(set) var files: [FileItem] = []

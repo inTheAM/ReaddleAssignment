@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E2D0301D284DC19600E6247E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301C284DC19600E6247E /* AppDelegate.swift */; };
 		E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301E284DC19600E6247E /* SceneDelegate.swift */; };
-		E2D03021284DC19600E6247E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03020284DC19600E6247E /* ViewController.swift */; };
+		E2D03021284DC19600E6247E /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03020284DC19600E6247E /* FilesViewController.swift */; };
 		E2D03026284DC19900E6247E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2D03025284DC19900E6247E /* Assets.xcassets */; };
 		E2D03029284DC19900E6247E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2D03027284DC19900E6247E /* LaunchScreen.storyboard */; };
 		E2D03034284DC19A00E6247E /* ReaddleAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03033284DC19A00E6247E /* ReaddleAssignmentTests.swift */; };
@@ -50,7 +50,7 @@
 		E2D03019284DC19600E6247E /* ReaddleAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReaddleAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D0301C284DC19600E6247E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2D0301E284DC19600E6247E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E2D03020284DC19600E6247E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2D03020284DC19600E6247E /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		E2D03025284DC19900E6247E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2D03028284DC19900E6247E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2D0302A284DC19900E6247E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			children = (
 				E2D0301C284DC19600E6247E /* AppDelegate.swift */,
 				E2D0301E284DC19600E6247E /* SceneDelegate.swift */,
-				E2D03020284DC19600E6247E /* ViewController.swift */,
+				E2D03020284DC19600E6247E /* FilesViewController.swift */,
 				E2D030602851A48500E6247E /* Models */,
 				E2D030522850C6F500E6247E /* Networking */,
 				E2D03050284E946C00E6247E /* ViewModel.swift */,
@@ -331,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2D030662851A52A00E6247E /* EndpointList.swift in Sources */,
-				E2D03021284DC19600E6247E /* ViewController.swift in Sources */,
+				E2D03021284DC19600E6247E /* FilesViewController.swift in Sources */,
 				E2D030682851A5F800E6247E /* GoogleSheetsServiceProtocol.swift in Sources */,
 				E2D030582851A2ED00E6247E /* Endpoint.swift in Sources */,
 				E2D030622851A48F00E6247E /* SpreadsheetData.swift in Sources */,

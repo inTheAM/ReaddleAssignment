@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    private let navigationTitle = "Readdle"
+class FilesViewController: UIViewController {
+    private let navigationTitle = "Files"
     
     /// The data source and delegate for the collection view
     private let viewModel = ViewModel()
