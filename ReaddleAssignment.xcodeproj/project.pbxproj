@@ -18,6 +18,10 @@
 		E2D0304D284E8AF000E6247E /* FileExplorerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0304C284E8AF000E6247E /* FileExplorerLayout.swift */; };
 		E2D0304F284E906200E6247E /* FileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0304E284E906200E6247E /* FileIcon.swift */; };
 		E2D03051284E946C00E6247E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03050284E946C00E6247E /* ViewModel.swift */; };
+		E2D030542850C74E00E6247E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030532850C74E00E6247E /* NetworkManager.swift */; };
+		E2D030562851A2C700E6247E /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030552851A2C700E6247E /* NetworkManagerProtocol.swift */; };
+		E2D030582851A2ED00E6247E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030572851A2ED00E6247E /* Endpoint.swift */; };
+		E2D0305C2851A32900E6247E /* Endpoint+MakeURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0305B2851A32900E6247E /* Endpoint+MakeURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		E2D0304C284E8AF000E6247E /* FileExplorerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExplorerLayout.swift; sourceTree = "<group>"; };
 		E2D0304E284E906200E6247E /* FileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIcon.swift; sourceTree = "<group>"; };
 		E2D03050284E946C00E6247E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		E2D030532850C74E00E6247E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E2D030552851A2C700E6247E /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
+		E2D030572851A2ED00E6247E /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		E2D0305B2851A32900E6247E /* Endpoint+MakeURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint+MakeURL.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,7 @@
 				E2D0301C284DC19600E6247E /* AppDelegate.swift */,
 				E2D0301E284DC19600E6247E /* SceneDelegate.swift */,
 				E2D03020284DC19600E6247E /* ViewController.swift */,
+				E2D030522850C6F500E6247E /* Networking */,
 				E2D03050284E946C00E6247E /* ViewModel.swift */,
 				E2D0304E284E906200E6247E /* FileIcon.swift */,
 				E2D0304C284E8AF000E6247E /* FileExplorerLayout.swift */,
@@ -131,6 +140,33 @@
 				E2D0303F284DC19A00E6247E /* ReaddleAssignmentUITestsLaunchTests.swift */,
 			);
 			path = ReaddleAssignmentUITests;
+			sourceTree = "<group>";
+		};
+		E2D030522850C6F500E6247E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E2D030592851A2F200E6247E /* NetworkManager */,
+				E2D0305A2851A2FE00E6247E /* Endpoint */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E2D030592851A2F200E6247E /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				E2D030532850C74E00E6247E /* NetworkManager.swift */,
+				E2D030552851A2C700E6247E /* NetworkManagerProtocol.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		E2D0305A2851A2FE00E6247E /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				E2D030572851A2ED00E6247E /* Endpoint.swift */,
+				E2D0305B2851A32900E6247E /* Endpoint+MakeURL.swift */,
+			);
+			path = Endpoint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,10 +300,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2D03021284DC19600E6247E /* ViewController.swift in Sources */,
+				E2D030582851A2ED00E6247E /* Endpoint.swift in Sources */,
 				E2D0301D284DC19600E6247E /* AppDelegate.swift in Sources */,
 				E2D0304F284E906200E6247E /* FileIcon.swift in Sources */,
+				E2D030542850C74E00E6247E /* NetworkManager.swift in Sources */,
 				E2D0304D284E8AF000E6247E /* FileExplorerLayout.swift in Sources */,
 				E2D03051284E946C00E6247E /* ViewModel.swift in Sources */,
+				E2D030562851A2C700E6247E /* NetworkManagerProtocol.swift in Sources */,
+				E2D0305C2851A32900E6247E /* Endpoint+MakeURL.swift in Sources */,
 				E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
