@@ -44,6 +44,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.fetchSpreadsheet { [weak collectionView] in
+            collectionView?.reloadData()
+        }
     }
     
     private func updateAccessibilityLabels() {
@@ -53,7 +56,6 @@ class ViewController: UIViewController {
     
     private func setUpCollectionView() {
         view.addSubview(collectionView)
-        collectionView.delegate = viewModel
         collectionView.dataSource = viewModel
         collectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -77,10 +79,19 @@ class ViewController: UIViewController {
             FileExplorerLayout.layoutType = .grid
             switchLayoutButton.setImage(UIImage(systemName: "list.bullet"), for: .normal)
         }
-        collectionView.reloadData()
+        reload(collectionView)
         
         updateAccessibilityLabels()
         self.collectionView.setCollectionViewLayout(layout, animated: true)
+    }
+    
+    func reload(_ collectionView: UICollectionView) {
+        
+        let contentOffset = collectionView.contentOffset
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+        collectionView.setContentOffset(contentOffset, animated: false)
+        
     }
 }
 
