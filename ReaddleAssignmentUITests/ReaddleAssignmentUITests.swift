@@ -23,7 +23,7 @@ class ReaddleAssignmentUITests: XCTestCase {
     }
 
     func testUIElementsExistOnLaunch() throws {
-        let header = app.navigationBars["Readdle"]
+        let header = app.navigationBars["Files"]
         let layoutToggle = app.navigationBars.buttons["toggle-list-button"]
         let collectionView = app.collectionViews["files-collection-view"]
         let fileIcon = app.cells["file-icon-vertical"]

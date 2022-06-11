@@ -26,7 +26,7 @@ extension FilesViewController {
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "icon", for: indexPath) as! FileIcon
-            let file = files[indexPath.item]
+            
             if CommandLine.arguments.contains("MockData") {
                 // Return mock data
                 switch FileExplorerLayout.layoutType {
@@ -37,6 +37,7 @@ extension FilesViewController {
                 }
             } else {
                 // Return actual data
+                let file = files[indexPath.item]
                 let image = file.fileType == "f" ? "doc.text" : "folder"
                 switch FileExplorerLayout.layoutType {
                 case .grid:
