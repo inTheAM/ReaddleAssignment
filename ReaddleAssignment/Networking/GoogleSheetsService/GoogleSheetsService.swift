@@ -25,39 +25,46 @@ struct GoogleSheetsService {
         }
     }
     
+    private func assignToParent(_ file: FileItem, to parentID: UUID, in parents: inout [FileItem]) {
+        guard let index = parents.firstIndex(where: { $0.id == parentID })  else {
+            fatalError("Parent does not exist!")
+        }
+        if parents[index].children == nil {
+            parents[index].children = [file]
+        } else {
+            parents[index].children?.append(file)
+        }
+        
+    }
+    
     private func organize(_ files: [FileItem]) -> [FileItem] {
         var fileItems = [FileItem]()
-        var folders = files.filter { $0.fileType == FileItem.FileType.directory.rawValue }
-        let filteredFiles = files.filter { $0.fileType == FileItem.FileType.file.rawValue }
-        fileItems.append(contentsOf: folders)
-        for file in filteredFiles {
+        let allFolders = files.filter { $0.fileType == FileItem.FileType.directory.rawValue }
+        let allFiles = files.filter { $0.fileType == FileItem.FileType.file.rawValue }
+        
+        fileItems.append(contentsOf: allFolders)
+        
+        // Assign each file to parent folder if existing
+        for file in allFiles {
             if let parentID = file.parentID {
-                if let index = folders.firstIndex(where: { $0.id == parentID }) {
-                    if folders[index].children == nil {
-                        folders[index].children = [file]
-                    } else {
-                        folders[index].children?.append(file)
-                    }
-                }
+                assignToParent(file, to: parentID, in: &fileItems)
             } else {
                 fileItems.append(file)
             }
         }
-        for (index, folder) in folders.enumerated() {
-            if let parentID = folder.parentID {
-                if let parentIndex = folders.firstIndex(where: { $0.id == parentID }) {
-                    if folders[parentIndex].children == nil {
-                        folders[parentIndex].children = [folder]
-                    } else {
-                        folders[parentIndex].children?.append(folder)
-                    }
-                    folders[parentIndex].children?.sort { $0.name < $1.name }
-                }
-                folders.remove(at: index)
+        
+        // Assign folders to parent folders if existing.
+        for (index, fileItem) in fileItems.enumerated() {
+            if fileItem.fileType == "d",
+               let parentID = fileItem.parentID {
+                assignToParent(fileItem, to: parentID, in: &fileItems)
+                fileItems.remove(at: index)
             }
-            
         }
+        
+        // Sort files by name and return
         fileItems.sort { $0.name < $1.name }
+        
         return fileItems
     }
 }
