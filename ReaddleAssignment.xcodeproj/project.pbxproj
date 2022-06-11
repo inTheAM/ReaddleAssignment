@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E29FB72B285451AB00E16A96 /* FileTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29FB72A285451AB00E16A96 /* FileTreeViewController.swift */; };
 		E2D0301D284DC19600E6247E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301C284DC19600E6247E /* AppDelegate.swift */; };
 		E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301E284DC19600E6247E /* SceneDelegate.swift */; };
 		E2D03021284DC19600E6247E /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03020284DC19600E6247E /* FilesViewController.swift */; };
@@ -27,6 +28,7 @@
 		E2D030642851A49900E6247E /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030632851A49900E6247E /* FileItem.swift */; };
 		E2D030662851A52A00E6247E /* EndpointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030652851A52A00E6247E /* EndpointList.swift */; };
 		E2D030682851A5F800E6247E /* GoogleSheetsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030672851A5F800E6247E /* GoogleSheetsServiceProtocol.swift */; };
+		E2D0306A2851A84C00E6247E /* FilesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030692851A84C00E6247E /* FilesDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E29FB72A285451AB00E16A96 /* FileTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTreeViewController.swift; sourceTree = "<group>"; };
 		E2D03019284DC19600E6247E /* ReaddleAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReaddleAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D0301C284DC19600E6247E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2D0301E284DC19600E6247E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		E2D030632851A49900E6247E /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		E2D030652851A52A00E6247E /* EndpointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointList.swift; sourceTree = "<group>"; };
 		E2D030672851A5F800E6247E /* GoogleSheetsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSheetsServiceProtocol.swift; sourceTree = "<group>"; };
+		E2D030692851A84C00E6247E /* FilesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +127,9 @@
 			children = (
 				E2D0301C284DC19600E6247E /* AppDelegate.swift */,
 				E2D0301E284DC19600E6247E /* SceneDelegate.swift */,
+				E29FB72A285451AB00E16A96 /* FileTreeViewController.swift */,
 				E2D03020284DC19600E6247E /* FilesViewController.swift */,
+				E2D030692851A84C00E6247E /* FilesDetailViewController.swift */,
 				E2D030602851A48500E6247E /* Models */,
 				E2D030522850C6F500E6247E /* Networking */,
 				E2D03050284E946C00E6247E /* ViewModel.swift */,
@@ -341,10 +347,12 @@
 				E2D030542850C74E00E6247E /* NetworkManager.swift in Sources */,
 				E2D0304D284E8AF000E6247E /* FileExplorerLayout.swift in Sources */,
 				E2D03051284E946C00E6247E /* ViewModel.swift in Sources */,
+				E29FB72B285451AB00E16A96 /* FileTreeViewController.swift in Sources */,
 				E2D030562851A2C700E6247E /* NetworkManagerProtocol.swift in Sources */,
 				E2D030642851A49900E6247E /* FileItem.swift in Sources */,
 				E2D0305C2851A32900E6247E /* Endpoint+MakeURL.swift in Sources */,
 				E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */,
+				E2D0306A2851A84C00E6247E /* FilesDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
