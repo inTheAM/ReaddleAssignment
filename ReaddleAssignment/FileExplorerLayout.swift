@@ -19,7 +19,25 @@ final class FileExplorerLayout: UICollectionViewFlowLayout {
     }
     
     /// Determines the layout of collection view cells.
-    static var layoutType = LayoutType.grid
+    static private(set) var layoutType = LayoutType.grid
+    
+    static var buttonIcon: String {
+        switch layoutType {
+        case .list:
+            return "square.grid.2x2"
+        case .grid:
+            return "list.bullet"
+        }
+    }
+    
+    static func toggle() {
+        switch layoutType {
+        case .grid:
+            layoutType = .list
+        default:
+            layoutType = .grid
+        }
+    }
     
     /// The delegate of the layout class.
     weak var delegate: UICollectionViewDelegate?
