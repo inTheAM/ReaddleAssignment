@@ -9,6 +9,7 @@ import UIKit
 
 /// A custom collection view cell to display files/folders
 final class FileIcon: UICollectionViewCell {
+    static let reuseIdentifier = "icon"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
