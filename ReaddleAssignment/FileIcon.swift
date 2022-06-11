@@ -9,6 +9,7 @@ import UIKit
 
 /// A custom collection view cell to display files/folders
 final class FileIcon: UICollectionViewCell {
+    static let reuseIdentifier = "icon"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +29,9 @@ final class FileIcon: UICollectionViewCell {
         nameLabel.bottomAnchor.constraint(equalTo: labelView.layoutMarginsGuide.bottomAnchor).isActive = true
         nameLabel.widthAnchor.constraint(equalTo: labelView.layoutMarginsGuide.widthAnchor).isActive = true
         nameLabel.heightAnchor.constraint(equalTo: labelView.layoutMarginsGuide.heightAnchor).isActive = true
+        
+        // Constraining width and height of image
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
         
         // Adding the image and label to the stack view in order
         stackView.addArrangedSubview(imageView)
@@ -81,7 +85,7 @@ final class FileIcon: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.layer.cornerRadius = 16
         stackView.layer.masksToBounds = true
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fill
         stackView.accessibilityIdentifier = "file-stackview"
         return stackView
     }()
@@ -94,9 +98,9 @@ final class FileIcon: UICollectionViewCell {
         stackView.axis = axis
         
         // Setting the image on the image view and adding padding
-        let configuration = UIImage.SymbolConfiguration(weight: .thin)
-        imageView.image = UIImage(systemName: image, withConfiguration: configuration)?.withAlignmentRectInsets(imageInsets)
-        
+        let configuration = UIImage.SymbolConfiguration(pointSize: 64, weight: .thin)
+        let systemImage = UIImage(systemName: image, withConfiguration: configuration)!.withAlignmentRectInsets(imageInsets)
+        imageView.image = systemImage
         // Setting the file name on the label
         nameLabel.text = name
         // Constraining the stack view within the view.
