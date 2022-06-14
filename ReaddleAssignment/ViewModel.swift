@@ -10,16 +10,17 @@ import UIKit
 
 
 final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    private let service = GoogleSheetsService()
+    private let service: GoogleSheetsServiceProtocol
     private(set) var file: FileItem
     private var cancellables = Set<AnyCancellable>()
     
-    init(file: FileItem? = nil) {
+    init(file: FileItem? = nil, service: GoogleSheetsServiceProtocol = GoogleSheetsService()) {
         if let file = file {
             self.file = file
         } else {
             self.file = FileItem(id: UUID(), name: "Files", fileType: "d", children: [])
         }
+        self.service = service
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
