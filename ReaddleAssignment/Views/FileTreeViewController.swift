@@ -9,6 +9,24 @@ import UIKit
 
 class FileTreeViewController: UICollectionViewController {
     
+    /// The data source for the collection view
+    var viewModel = ViewModel()
+    
+    override func loadView() {
+        view = UIView()
+        view.backgroundColor = .systemBackground
+        title = viewModel.file.name
+        setUpCollectionView()
+        setUpNavigationButtons()
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let file = viewModel.file.children?[indexPath.item] {
+            showDetailViewController(file)
+        }
+    }
+    
     /// The navigation button to change the view's layout from grid to list and vice versa.
     private lazy var switchLayoutButton: UIButton = {
         let button = UIButton()
@@ -24,10 +42,10 @@ class FileTreeViewController: UICollectionViewController {
     /// Set's up the view controller's collection view using the given datasource.
     /// - Parameters:
     ///   - dataSource: The data source for the collection view.
-    func setUpCollectionView(dataSource: UICollectionViewDataSource) {
+    func setUpCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: FileExplorerLayout())
         collectionView.alwaysBounceVertical = true
-        collectionView.dataSource = dataSource
+        collectionView.dataSource = viewModel
         collectionView.register(FileIcon.self, forCellWithReuseIdentifier: FileIcon.reuseIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.accessibilityIdentifier = "files-collection-view"
@@ -75,22 +93,12 @@ class FileTreeViewController: UICollectionViewController {
                     vc.prepareLayoutChange()
                 }
             }
-        } else {
-            presentAlert()
         }
-    }
-    
-    func presentAlert() {
-        let alert = UIAlertController(title: "Internal error", message: "Unable to change layout", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(ok)
-        present(alert, animated: true)
     }
     
     func showDetailViewController(_ file: FileItem) {
         let viewController = FilesDetailViewController()
-        viewController.title = file.name
-        viewController.files = file.children ?? []
+        viewController.viewModel = ViewModel(file: file)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
