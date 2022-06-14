@@ -9,21 +9,6 @@ import UIKit
 
 final class FilesViewController: FileTreeViewController {
     
-    private let navigationTitle = "Files"
-    
-    /// The data source for the collection view
-    private let viewModel = ViewModel()
-    
-    override func loadView() {
-        view = UIView()
-        view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = navigationTitle
-        
-        setUpCollectionView(dataSource: viewModel)
-        setUpNavigationButtons()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         viewModel.fetchSpreadsheet { [weak collectionView] in
             collectionView?.reloadData()
@@ -31,11 +16,4 @@ final class FilesViewController: FileTreeViewController {
     }
 }
 
-
-extension FilesViewController {
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let file = viewModel.files[indexPath.item]
-        showDetailViewController(file)
-    }
-}
 

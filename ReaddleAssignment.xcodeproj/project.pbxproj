@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		E29FB72B285451AB00E16A96 /* FileTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29FB72A285451AB00E16A96 /* FileTreeViewController.swift */; };
+		E2A9ED792858CB4800A7564C /* MockGoogleSheetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED782858CB4800A7564C /* MockGoogleSheetsService.swift */; };
+		E2A9ED7B2858CB6A00A7564C /* FileItem+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED7A2858CB6A00A7564C /* FileItem+Samples.swift */; };
 		E2D0301D284DC19600E6247E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301C284DC19600E6247E /* AppDelegate.swift */; };
 		E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301E284DC19600E6247E /* SceneDelegate.swift */; };
 		E2D03021284DC19600E6247E /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03020284DC19600E6247E /* FilesViewController.swift */; };
 		E2D03026284DC19900E6247E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2D03025284DC19900E6247E /* Assets.xcassets */; };
 		E2D03029284DC19900E6247E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2D03027284DC19900E6247E /* LaunchScreen.storyboard */; };
-		E2D03034284DC19A00E6247E /* ReaddleAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03033284DC19A00E6247E /* ReaddleAssignmentTests.swift */; };
+		E2D03034284DC19A00E6247E /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03033284DC19A00E6247E /* ViewModelTests.swift */; };
 		E2D0303E284DC19A00E6247E /* ReaddleAssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0303D284DC19A00E6247E /* ReaddleAssignmentUITests.swift */; };
 		E2D03040284DC19A00E6247E /* ReaddleAssignmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0303F284DC19A00E6247E /* ReaddleAssignmentUITestsLaunchTests.swift */; };
 		E2D0304D284E8AF000E6247E /* FileExplorerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0304C284E8AF000E6247E /* FileExplorerLayout.swift */; };
@@ -50,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		E29FB72A285451AB00E16A96 /* FileTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTreeViewController.swift; sourceTree = "<group>"; };
+		E2A9ED782858CB4800A7564C /* MockGoogleSheetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGoogleSheetsService.swift; sourceTree = "<group>"; };
+		E2A9ED7A2858CB6A00A7564C /* FileItem+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileItem+Samples.swift"; sourceTree = "<group>"; };
 		E2D03019284DC19600E6247E /* ReaddleAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReaddleAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D0301C284DC19600E6247E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2D0301E284DC19600E6247E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +62,7 @@
 		E2D03028284DC19900E6247E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2D0302A284DC19900E6247E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2D0302F284DC19A00E6247E /* ReaddleAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReaddleAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2D03033284DC19A00E6247E /* ReaddleAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaddleAssignmentTests.swift; sourceTree = "<group>"; };
+		E2D03033284DC19A00E6247E /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		E2D03039284DC19A00E6247E /* ReaddleAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReaddleAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D0303D284DC19A00E6247E /* ReaddleAssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaddleAssignmentUITests.swift; sourceTree = "<group>"; };
 		E2D0303F284DC19A00E6247E /* ReaddleAssignmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaddleAssignmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -113,6 +117,30 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E2A9ED7C2858CE6700A7564C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E2D03033284DC19A00E6247E /* ViewModelTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		E2A9ED7D2858CE6E00A7564C /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				E2A9ED7A2858CB6A00A7564C /* FileItem+Samples.swift */,
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
+		E2A9ED7E2858CE7600A7564C /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E2A9ED782858CB4800A7564C /* MockGoogleSheetsService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		E2D03010284DC19600E6247E = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +181,9 @@
 		E2D03032284DC19A00E6247E /* ReaddleAssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
-				E2D03033284DC19A00E6247E /* ReaddleAssignmentTests.swift */,
+				E2A9ED7C2858CE6700A7564C /* Tests */,
+				E2A9ED7D2858CE6E00A7564C /* Samples */,
+				E2A9ED7E2858CE7600A7564C /* Mocks */,
 			);
 			path = ReaddleAssignmentTests;
 			sourceTree = "<group>";
@@ -368,7 +398,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2D03034284DC19A00E6247E /* ReaddleAssignmentTests.swift in Sources */,
+				E2A9ED792858CB4800A7564C /* MockGoogleSheetsService.swift in Sources */,
+				E2A9ED7B2858CB6A00A7564C /* FileItem+Samples.swift in Sources */,
+				E2D03034284DC19A00E6247E /* ViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
