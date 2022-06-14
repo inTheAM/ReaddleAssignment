@@ -39,8 +39,10 @@ extension NetworkManager: NetworkManagerProtocol {
     where Response: Decodable {
         do {
             let request = try makeURLRequest(for: endpoint)
-            
             let decoder = JSONDecoder()
+            
+            // dataTaskPublisher(for:_) always runs on a background thread.
+            // Subscribers should subscribe on the main thread if they intend to update UI elements.
             return urlSession.dataTaskPublisher(for: request)
 #if DEBUG
                 .map { output in

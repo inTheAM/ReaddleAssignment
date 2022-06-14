@@ -31,7 +31,8 @@ final class FileIcon: UICollectionViewCell {
         nameLabel.heightAnchor.constraint(equalTo: labelView.layoutMarginsGuide.heightAnchor).isActive = true
         
         // Constraining width and height of image
-        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
+        
         
         // Adding the image and label to the stack view in order
         stackView.addArrangedSubview(imageView)
@@ -39,6 +40,7 @@ final class FileIcon: UICollectionViewCell {
         
         // Adding the stack view to the main view
         addSubview(stackView)
+        
         isAccessibilityElement = true
         accessibilityLabel = nameLabel.text
         accessibilityIdentifier = "file-icon-vertical"
@@ -60,7 +62,7 @@ final class FileIcon: UICollectionViewCell {
     /// The file-name label
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .label
         label.allowsDefaultTighteningForTruncation = true
         label.numberOfLines = 2
@@ -85,7 +87,7 @@ final class FileIcon: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.layer.cornerRadius = 16
         stackView.layer.masksToBounds = true
-        stackView.distribution = .fill
+        stackView.distribution = .fillProportionally
         stackView.accessibilityIdentifier = "file-stackview"
         return stackView
     }()
@@ -98,7 +100,7 @@ final class FileIcon: UICollectionViewCell {
         stackView.axis = axis
         
         // Setting the image on the image view and adding padding
-        let configuration = UIImage.SymbolConfiguration(pointSize: 64, weight: .thin)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 48, weight: .thin)
         let systemImage = UIImage(systemName: image, withConfiguration: configuration)!.withAlignmentRectInsets(imageInsets)
         imageView.image = systemImage
         // Setting the file name on the label

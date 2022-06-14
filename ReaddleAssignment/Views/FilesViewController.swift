@@ -24,8 +24,7 @@ final class FilesViewController: FileTreeViewController {
         setUpNavigationButtons()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
         viewModel.fetchSpreadsheet { [weak collectionView] in
             collectionView?.reloadData()
         }

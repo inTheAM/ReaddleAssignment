@@ -8,7 +8,6 @@
 import UIKit
 
 class FileTreeViewController: UICollectionViewController {
-    weak var parentController: FileTreeViewController? = nil
     
     /// The navigation button to change the view's layout from grid to list and vice versa.
     private lazy var switchLayoutButton: UIButton = {
@@ -27,6 +26,7 @@ class FileTreeViewController: UICollectionViewController {
     ///   - dataSource: The data source for the collection view.
     func setUpCollectionView(dataSource: UICollectionViewDataSource) {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: FileExplorerLayout())
+        collectionView.alwaysBounceVertical = true
         collectionView.dataSource = dataSource
         collectionView.register(FileIcon.self, forCellWithReuseIdentifier: FileIcon.reuseIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,25 +69,28 @@ class FileTreeViewController: UICollectionViewController {
     @objc func switchLayout() {
         FileExplorerLayout.toggle()
         prepareLayoutChange()
-        var parentVC = self.parentController
-        while parentVC != nil {
-            parentVC?.prepareLayoutChange()
-            parentVC = parentVC?.parentController
+        if let viewControllers = navigationController?.viewControllers {
+            for controller in viewControllers {
+                if let vc = controller as? FileTreeViewController {
+                    vc.prepareLayoutChange()
+                }
+            }
+        } else {
+            presentAlert()
         }
-//        if let viewControllers = navigationController?.viewControllers {
-//            for controller in viewControllers {
-//                if let vc = controller as? FileTreeViewController {
-//                    vc.prepareLayoutChange()
-//                }
-//            }
-//        }
+    }
+    
+    func presentAlert() {
+        let alert = UIAlertController(title: "Internal error", message: "Unable to change layout", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
     }
     
     func showDetailViewController(_ file: FileItem) {
         let viewController = FilesDetailViewController()
         viewController.title = file.name
         viewController.files = file.children ?? []
-        viewController.parentController = self
         navigationController?.pushViewController(viewController, animated: true)
     }
     
