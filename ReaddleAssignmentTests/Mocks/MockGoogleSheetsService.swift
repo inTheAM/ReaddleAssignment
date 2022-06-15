@@ -10,9 +10,15 @@ import Foundation
 @testable import ReaddleAssignment
 
 struct MockGoogleSheetsService: GoogleSheetsServiceProtocol {
-    func fetchSpreadsheet(_ spreadsheetID: String, range: String) -> AnyPublisher<[FileItem], Never> {
+    func addItems(_ spreadsheetID: String, items: FileItem...) -> AnyPublisher<[FileItem], SheetError> {
+        Just(items)
+            .setFailureType(to: SheetError.self)
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchSpreadsheet(_ spreadsheetID: String, range: String) -> AnyPublisher<[FileItem], SheetError> {
         Just(FileItem.samples)
-            .setFailureType(to: Never.self)
+            .setFailureType(to: SheetError.self)
             .eraseToAnyPublisher()
     }
 }
