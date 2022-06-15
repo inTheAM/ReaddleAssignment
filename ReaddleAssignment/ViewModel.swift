@@ -11,15 +11,14 @@ import UIKit
 
 final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private let service: GoogleSheetsServiceProtocol
-    private(set) var file: FileItem
+    private(set) var file: CurrentValueSubject<FileItem, Never>
+    private(set) var error = PassthroughSubject<ErrorAlert?, Never>()
+
     private var cancellables = Set<AnyCancellable>()
+    var onUpdate: (()->())?
     
-    init(file: FileItem? = nil, service: GoogleSheetsServiceProtocol = GoogleSheetsService()) {
-        if let file = file {
-            self.file = file
-        } else {
-            self.file = FileItem(id: UUID(), name: "Files", fileType: "d", children: [])
-        }
+    init(file: FileItem, service: GoogleSheetsServiceProtocol = GoogleSheetsService()) {
+        self.file = .init(file)
         self.service = service
     }
     
@@ -29,7 +28,7 @@ final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDel
             return 1
         } else {
             // Return actual data
-            return file.children?.count ?? 0
+            return file.value.children?.count ?? 0
         }
     }
     
@@ -46,8 +45,8 @@ final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDel
             }
         } else {
             // Return actual data
-            if let file = file.children?[indexPath.item] {
-                let image = file.fileType == "f" ? "doc.text" : "folder"
+            if let file = file.value.children?[indexPath.item] {
+                let image = file.fileType == .file ? "doc.text" : "folder"
                 switch FileExplorerLayout.layoutType {
                 case .grid:
                     cell.configure(axis: .vertical, image: image, name: file.name)
@@ -61,15 +60,37 @@ final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDel
         return cell
     }
     
-    func fetchSpreadsheet(_ completion: @escaping ()->()) {
+    func fetchSpreadsheet() {
         service.fetchSpreadsheet("1jHvPaLkwpWbnnWZ6KNN-HG1IEfpnP_v9i6noHIDVVQ8", range: "A:D")
             .receive(on: RunLoop.main)
+            .catch { [weak self] error -> AnyPublisher<[FileItem], Never> in
+                self?.error.send(.init(.failedToFetch))
+                return Just([])
+                    .setFailureType(to: Never.self)
+                    .eraseToAnyPublisher()
+            }
             .sink { [weak self] files in
-                self?.file.children = files
-                completion()
+                    self?.file.value.children = files
+                
             }
             .store(in: &cancellables)
-        
     }
+    
+    func addNewFileItem(_ item: FileItem) {
+        service.addItems("1jHvPaLkwpWbnnWZ6KNN-HG1IEfpnP_v9i6noHIDVVQ8", items: item)
+            .receive(on: RunLoop.main)
+            .catch { [weak self] error -> AnyPublisher<[FileItem], Never> in
+                self?.error.send(.init(.failedToAddItem))
+                return Just([])
+                    .setFailureType(to: Never.self)
+                    .eraseToAnyPublisher()
+            }
+            .sink { [weak self] files in
+                self?.file.value.children?.append(contentsOf: files)
+            }
+            .store(in: &cancellables)
+    }
+    
 }
+
 

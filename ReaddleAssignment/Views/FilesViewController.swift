@@ -10,9 +10,7 @@ import UIKit
 final class FilesViewController: FileTreeViewController {
     
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.fetchSpreadsheet { [weak collectionView] in
-            collectionView?.reloadData()
-        }
+        viewModel.fetchSpreadsheet()
     }
 }
 
