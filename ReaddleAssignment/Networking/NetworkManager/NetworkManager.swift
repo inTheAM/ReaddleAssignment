@@ -29,6 +29,16 @@ struct NetworkManager {
         request.setValue("application/json", forHTTPHeaderField: "Content-type")
         return request
     }
+    
+    /// Attaches a payload to a URLRequest.
+    /// - Parameters:
+    ///   - payload: The data to attach to the body of the request.
+    ///   - request: The request to attach the payload to.
+    private func attach<Payload>(_ payload: Payload, to request: inout URLRequest) throws
+    where Payload: Encodable {
+        let body = try JSONEncoder().encode(payload)
+        request.httpBody = body
+    }
 }
 
 extension NetworkManager: NetworkManagerProtocol {
@@ -68,6 +78,46 @@ extension NetworkManager: NetworkManagerProtocol {
         }
     }
     
+    // MARK: - Request with payload
+    /// Performs a request using the given endpoint, authorization type, and payload.
+    /// - Parameters:
+    ///   - endpoint: The endpoint for the resource being requested.
+    ///   - payload: The data being sent in the request.
+    /// - Returns: A publisher that publishes either the decoded response from the server or a request error.
+    func performRequest<Payload, Response>(
+        endpoint: Endpoint,
+        payload: Payload) -> AnyPublisher<Response, Error>
+    where Payload: Encodable, Response: Decodable {
+        do {
+            var request = try makeURLRequest(for: endpoint)
+            //            authorize(&request, with: authType)
+            try attach(payload, to: &request)
+            dump(request)
+            let decoder = JSONDecoder()
+            return urlSession.dataTaskPublisher(for: request)
+#if DEBUG
+                .map { output in
+                    let object = try? JSONSerialization.jsonObject(with: output.data)
+                    let data = try? JSONSerialization.data(withJSONObject: object!, options: [.prettyPrinted])
+                    let prettyPrintedString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                    print("\n==========DATA==========\n", prettyPrintedString as Any, "\n\n")
+                    return output.data
+                }
+#else
+                .map(\.data)
+#endif
+                .decode(type: Response.self, decoder: decoder)
+                .mapError { error in
+                    dump(error, name: "ERROR LOADING DATA: ")
+                    return error
+                }
+                .eraseToAnyPublisher()
+            
+        } catch {
+            return Fail(error: error)
+                .eraseToAnyPublisher()
+        }
+    }
 }
 
 
