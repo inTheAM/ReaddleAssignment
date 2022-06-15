@@ -18,4 +18,10 @@ extension Endpoint {
         let path = "v4/spreadsheets/" + spreadsheetID + "/values/" + range
         return Endpoint(httpMethod: .get, path: path, queryItems: [URLQueryItem(name: "majorDimension", value: "ROWS")])
     }
+    
+    
+    static func addItem(_ spreadsheetID: String, range: String) -> Endpoint {
+        let path = "v4/spreadsheets/" + spreadsheetID + "/values/" + range + ":append"
+        return Endpoint(httpMethod: .post, path: path)
+    }
 }
