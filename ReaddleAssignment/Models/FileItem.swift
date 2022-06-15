@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct FileItem {
+struct FileItem: Identifiable, Equatable {
+    static let rootDirectory = FileItem(id: UUID(), name: "Files", fileType: .directory, children: [])
     
     enum FileType: String, Decodable {
         case file = "f", directory = "d"
@@ -16,10 +17,6 @@ struct FileItem {
     let id: UUID
     var parentID: UUID?
     var name: String
-    let fileType: String
+    let fileType: FileType
     var children: [FileItem]?
-}
-
-extension FileItem: Codable {
-    
 }
