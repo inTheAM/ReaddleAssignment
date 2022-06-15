@@ -11,6 +11,7 @@
 		E2A9ED792858CB4800A7564C /* MockGoogleSheetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED782858CB4800A7564C /* MockGoogleSheetsService.swift */; };
 		E2A9ED7B2858CB6A00A7564C /* FileItem+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED7A2858CB6A00A7564C /* FileItem+Samples.swift */; };
 		E2A9ED80285995CD00A7564C /* FileTreeRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED7F285995CD00A7564C /* FileTreeRepresentable.swift */; };
+		E2A9ED822859DD7100A7564C /* SpreadsheetUpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED812859DD7100A7564C /* SpreadsheetUpdateData.swift */; };
 		E2D0301D284DC19600E6247E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301C284DC19600E6247E /* AppDelegate.swift */; };
 		E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301E284DC19600E6247E /* SceneDelegate.swift */; };
 		E2D03021284DC19600E6247E /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03020284DC19600E6247E /* FilesViewController.swift */; };
@@ -56,6 +57,7 @@
 		E2A9ED782858CB4800A7564C /* MockGoogleSheetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGoogleSheetsService.swift; sourceTree = "<group>"; };
 		E2A9ED7A2858CB6A00A7564C /* FileItem+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileItem+Samples.swift"; sourceTree = "<group>"; };
 		E2A9ED7F285995CD00A7564C /* FileTreeRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTreeRepresentable.swift; sourceTree = "<group>"; };
+		E2A9ED812859DD7100A7564C /* SpreadsheetUpdateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetUpdateData.swift; sourceTree = "<group>"; };
 		E2D03019284DC19600E6247E /* ReaddleAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReaddleAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D0301C284DC19600E6247E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2D0301E284DC19600E6247E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				E2D030612851A48F00E6247E /* SpreadsheetData.swift */,
+				E2A9ED812859DD7100A7564C /* SpreadsheetUpdateData.swift */,
 				E2A9ED7F285995CD00A7564C /* FileTreeRepresentable.swift */,
 				E2D030632851A49900E6247E /* FileItem.swift */,
 			);
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2D030662851A52A00E6247E /* EndpointList.swift in Sources */,
+				E2A9ED822859DD7100A7564C /* SpreadsheetUpdateData.swift in Sources */,
 				E2D03021284DC19600E6247E /* FilesViewController.swift in Sources */,
 				E2D030682851A5F800E6247E /* GoogleSheetsServiceProtocol.swift in Sources */,
 				E2D030582851A2ED00E6247E /* Endpoint.swift in Sources */,
