@@ -74,7 +74,7 @@ final class FileExplorerLayout: UICollectionViewFlowLayout {
         let numberOfColumns: Int = Self.layoutType == .grid ? 3 : 1
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         
-        let columnHeight: CGFloat = Self.layoutType == .grid ? columnWidth+32 : 60
+        let columnHeight: CGFloat = Self.layoutType == .grid ? columnWidth : 60
         
         var xOffsets: [CGFloat] = []
         for column in 0..<numberOfColumns {
