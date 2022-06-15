@@ -22,6 +22,6 @@ protocol GoogleSheetsServiceProtocol {
     ///   - spreadsheetID: The id of the spreadsheet to modify.
     ///   - item: The item to add to the spreadsheet.
     /// - Returns: A publisher that publishes the files added to the spreadsheet or an error if unsuccessful.
-    func addItems(_ spreadsheetID: String, items: [FileItem]) -> AnyPublisher<[FileItem], SheetError>
+    func addItems(_ spreadsheetID: String, items: FileItem...) -> AnyPublisher<[FileItem], SheetError>
     
 }
