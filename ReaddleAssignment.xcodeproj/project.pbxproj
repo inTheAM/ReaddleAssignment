@@ -47,6 +47,7 @@
 		E2D4522B285F7CC200ADC148 /* FileTreeRepresentableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4522A285F7CC200ADC148 /* FileTreeRepresentableTests.swift */; };
 		E2D4522D285F828300ADC148 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4522C285F828300ADC148 /* MockURLProtocol.swift */; };
 		E2D4522F285F82CA00ADC148 /* XCTestCase+TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4522E285F82CA00ADC148 /* XCTestCase+TestData.swift */; };
+		E2D45231285F83A200ADC148 /* GoogleSheetsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D45230285F83A200ADC148 /* GoogleSheetsServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		E2D4522A285F7CC200ADC148 /* FileTreeRepresentableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTreeRepresentableTests.swift; sourceTree = "<group>"; };
 		E2D4522C285F828300ADC148 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		E2D4522E285F82CA00ADC148 /* XCTestCase+TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TestData.swift"; sourceTree = "<group>"; };
+		E2D45230285F83A200ADC148 /* GoogleSheetsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSheetsServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				E2D03033284DC19A00E6247E /* ViewModelTests.swift */,
+				E2D45230285F83A200ADC148 /* GoogleSheetsServiceTests.swift */,
 				E2D4522A285F7CC200ADC148 /* FileTreeRepresentableTests.swift */,
 			);
 			path = Tests;
@@ -490,6 +493,7 @@
 				E2D45229285F1F0000ADC148 /* MockAuthService.swift in Sources */,
 				E2D45224285EECCE00ADC148 /* XCTestCase+Await.swift in Sources */,
 				E2A9ED7B2858CB6A00A7564C /* FileItem+Samples.swift in Sources */,
+				E2D45231285F83A200ADC148 /* GoogleSheetsServiceTests.swift in Sources */,
 				E2D4522B285F7CC200ADC148 /* FileTreeRepresentableTests.swift in Sources */,
 				E2D03034284DC19A00E6247E /* ViewModelTests.swift in Sources */,
 			);
