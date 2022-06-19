@@ -10,6 +10,7 @@ import Foundation
 @testable import ReaddleAssignment
 
 struct MockGoogleSheetsService: GoogleSheetsServiceProtocol {
+    
     func fetchSpreadsheet() -> AnyPublisher<[FileItem], SheetError> {
         Just(FileItem.samples)
             .setFailureType(to: SheetError.self)

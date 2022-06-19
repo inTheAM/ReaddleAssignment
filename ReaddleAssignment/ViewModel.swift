@@ -5,10 +5,8 @@
 //  Created by Ahmed Mgua on 06/06/2022.
 //
 
-import GoogleSignIn
 import Combine
 import UIKit
-import SwiftUI
 
 final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: - Services
@@ -26,11 +24,11 @@ final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDel
     private(set) var isSignedIn: CurrentValueSubject<Bool, Never>
     private var cancellables = Set<AnyCancellable>()
     
-    init(file: FileItem, service: GoogleSheetsServiceProtocol = GoogleSheetsService(), authService: AuthServiceProtocol = AuthService()) {
+    init(file: FileItem, sheetsService: GoogleSheetsServiceProtocol = GoogleSheetsService(), authService: AuthServiceProtocol = AuthService()) {
         self.file = .init(file)
-        self.sheetsService = service
+        self.sheetsService = sheetsService
         self.authService = authService
-        isSignedIn = .init(authService.user != nil)
+        isSignedIn = .init(false)
     }
     
     // MARK: - UICollectionViewDataSource conformance.
@@ -126,7 +124,6 @@ extension ViewModel {
                         file.children = [insertedFile]
                     }
                 }
-//                print("SENDING FILE", file)
                 self.file.send(file)
             }
             .store(in: &cancellables)
@@ -165,6 +162,11 @@ extension ViewModel {
             .store(in: &cancellables)
         
     }
+}
+
+// MARK: - Auth Service methods
+
+extension ViewModel {
     
     /// Signs in a user using the auth service
     /// - Parameter viewController: The view controller to present when sign-in is complete.

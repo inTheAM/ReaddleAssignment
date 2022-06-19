@@ -12,7 +12,7 @@ import XCTest
 class ViewModelTests: XCTestCase {
     var viewModel: ViewModel!
     override func setUpWithError() throws {
-        viewModel = ViewModel(file: .root(), service: MockGoogleSheetsService())
+        viewModel = ViewModel(file: .root(), sheetsService: MockGoogleSheetsService(), authService: MockAuthService())
         dump(viewModel)
     }
 
@@ -58,6 +58,27 @@ class ViewModelTests: XCTestCase {
         viewModel.delete(at: 0)
         let deleted = try awaitResult(from: deletedItemPublisher)
         XCTAssertNil(deleted.children?.first)
+    }
+    
+    func testSigningIn() throws {
+        let isSignedInPublisher = viewModel.isSignedIn
+            .first()
+
+        viewModel.signIn(presenting: FilesViewController())
+
+        let isSignedIn = try awaitResult(from: isSignedInPublisher)
+        XCTAssertTrue(isSignedIn)
+        
+    }
+    
+    func testSigningOut() throws {
+        let isSignedInPublisher = viewModel.isSignedIn
+            .first()
+        
+        viewModel.signOut()
+        
+        let isSignedIn = try awaitResult(from: isSignedInPublisher)
+        XCTAssertFalse(isSignedIn)
     }
 }
 

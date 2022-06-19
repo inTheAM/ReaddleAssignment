@@ -43,6 +43,8 @@
 		E2D45221285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D45220285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift */; };
 		E2D45224285EECCE00ADC148 /* XCTestCase+Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D45223285EECCE00ADC148 /* XCTestCase+Await.swift */; };
 		E2D45227285F085C00ADC148 /* XCUIApplication+LaunchArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D45226285F085C00ADC148 /* XCUIApplication+LaunchArguments.swift */; };
+		E2D45229285F1F0000ADC148 /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D45228285F1F0000ADC148 /* MockAuthService.swift */; };
+		E2D4522B285F7CC200ADC148 /* FileTreeRepresentableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4522A285F7CC200ADC148 /* FileTreeRepresentableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		E2D45220285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetDeleteRequest.swift; sourceTree = "<group>"; };
 		E2D45223285EECCE00ADC148 /* XCTestCase+Await.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Await.swift"; sourceTree = "<group>"; };
 		E2D45226285F085C00ADC148 /* XCUIApplication+LaunchArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+LaunchArguments.swift"; sourceTree = "<group>"; };
+		E2D45228285F1F0000ADC148 /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
+		E2D4522A285F7CC200ADC148 /* FileTreeRepresentableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTreeRepresentableTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				E2D03033284DC19A00E6247E /* ViewModelTests.swift */,
+				E2D4522A285F7CC200ADC148 /* FileTreeRepresentableTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				E2A9ED782858CB4800A7564C /* MockGoogleSheetsService.swift */,
+				E2D45228285F1F0000ADC148 /* MockAuthService.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -473,8 +479,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2A9ED792858CB4800A7564C /* MockGoogleSheetsService.swift in Sources */,
+				E2D45229285F1F0000ADC148 /* MockAuthService.swift in Sources */,
 				E2D45224285EECCE00ADC148 /* XCTestCase+Await.swift in Sources */,
 				E2A9ED7B2858CB6A00A7564C /* FileItem+Samples.swift in Sources */,
+				E2D4522B285F7CC200ADC148 /* FileTreeRepresentableTests.swift in Sources */,
 				E2D03034284DC19A00E6247E /* ViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
