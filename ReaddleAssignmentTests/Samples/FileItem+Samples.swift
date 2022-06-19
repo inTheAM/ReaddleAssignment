@@ -10,5 +10,6 @@ import Foundation
 
 extension FileItem {
     static let exampleParentID = UUID()
-    static let samples = [FileItem(id: exampleParentID, name: "Files", fileType: "d", children: [.init(id: UUID(), parentID: exampleParentID, name: "file 1", fileType: "f"), .init(id: UUID(), parentID: exampleParentID, name: "file2", fileType: "f")])]
+    static let samples = [FileItem(id: exampleParentID, range: "A1:D1", name: "Files", fileType: .directory, children: [.init(id: UUID(), parentID: exampleParentID, range: "A2:D2", name: "file 1", fileType: .file), .init(id: UUID(), parentID: exampleParentID, range: "A3:D3", name: "file2", fileType: .file)]), .init(id: UUID(), parentID: nil, range: "A4:D4", name: "file3", fileType: .file), .init(id: UUID(), parentID: exampleParentID, range: "A5:D5", name: "folder2", fileType: .file)]
+    static let sample = FileItem(id: UUID(), parentID: nil, range: "A1:D1", name: "file21.pdf", fileType: .file, children: nil)
 }

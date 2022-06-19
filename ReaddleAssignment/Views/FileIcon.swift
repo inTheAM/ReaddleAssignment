@@ -31,7 +31,7 @@ final class FileIcon: UICollectionViewCell {
         nameLabel.heightAnchor.constraint(equalTo: labelView.layoutMarginsGuide.heightAnchor).isActive = true
         
         // Constraining width and height of image
-        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, constant: -32).isActive = true
         
         
         // Adding the image and label to the stack view in order

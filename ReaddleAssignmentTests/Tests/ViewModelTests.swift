@@ -5,13 +5,15 @@
 //  Created by Ahmed Mgua on 06/06/2022.
 //
 
+import Combine
 import XCTest
 @testable import ReaddleAssignment
 
 class ViewModelTests: XCTestCase {
     var viewModel: ViewModel!
     override func setUpWithError() throws {
-        viewModel = ViewModel(service: MockGoogleSheetsService())
+        viewModel = ViewModel(file: .root(), sheetsService: MockGoogleSheetsService(), authService: MockAuthService())
+        dump(viewModel)
     }
 
     override func tearDownWithError() throws {
@@ -19,13 +21,65 @@ class ViewModelTests: XCTestCase {
     }
 
     func testFetchingSpreadsheet() throws {
-        let expectation = expectation(description: "files fetched successfully")
-        viewModel.fetchSpreadsheet {
-            XCTAssertEqual(self.viewModel.file.children?[0].id, FileItem.samples[0].id)
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 5)
+        let fetchedFilePublisher = viewModel.file
+            .dropFirst()
+            .first()
+        
+        viewModel.fetchSpreadsheet()
+        
+        let file = try awaitResult(from: fetchedFilePublisher)
+        XCTAssertEqual(file.children?[0].id, FileItem.samples[0].id)
     }
 
+    func testAddingItem() throws {
+        let addedItemPublisher = viewModel.file
+            .dropFirst()
+            .first()
+        
+        viewModel.addNewFileItem("file3.pdf", type: .file)
+        
+        let file = try awaitResult(from: addedItemPublisher)
+        XCTAssertEqual(file.children?[0].name, "file3.pdf")
+    }
 
+    func testDeletingItem() throws {
+        let addedItemPublisher = viewModel.file
+            .dropFirst()
+            .first()
+        
+        viewModel.addNewFileItem("file3.pdf", type: .file)
+        
+        _ = try awaitResult(from: addedItemPublisher)
+        
+        let deletedItemPublisher = viewModel.file
+            .dropFirst()
+            .first()
+        
+        viewModel.delete(at: 0)
+        let deleted = try awaitResult(from: deletedItemPublisher)
+        XCTAssertNil(deleted.children?.first)
+    }
+    
+    func testSigningIn() throws {
+        let isSignedInPublisher = viewModel.isSignedIn
+            .first()
+
+        viewModel.signIn(presenting: FilesViewController())
+
+        let isSignedIn = try awaitResult(from: isSignedInPublisher)
+        XCTAssertTrue(isSignedIn)
+        
+    }
+    
+    func testSigningOut() throws {
+        let isSignedInPublisher = viewModel.isSignedIn
+            .first()
+        
+        viewModel.signOut()
+        
+        let isSignedIn = try awaitResult(from: isSignedInPublisher)
+        XCTAssertFalse(isSignedIn)
+    }
 }
+
+

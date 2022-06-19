@@ -9,10 +9,15 @@ import UIKit
 
 final class FilesViewController: FileTreeViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.restorePreviousSessionIfExists()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.fetchSpreadsheet { [weak collectionView] in
-            collectionView?.reloadData()
-        }
+        super.viewDidAppear(animated)
+        viewModel.fetchSpreadsheet()
+        
     }
 }
 
