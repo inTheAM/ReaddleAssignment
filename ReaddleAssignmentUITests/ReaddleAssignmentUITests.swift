@@ -142,4 +142,18 @@ class ReaddleAssignmentUITests: XCTestCase {
         XCTAssert(filename.waitForExistence(timeout: 5))
     }
     
+    func testDeletingItem() throws {
+        app.launch(withArguments: ["SignedIn", "MockData"])
+        
+        
+        let filename = app.staticTexts["file1.pdf"]
+        let deleteItem = app.buttons["Delete"]
+        filename.press(forDuration: 1)
+        XCTAssert(deleteItem.waitForExistence(timeout: 5))
+        deleteItem.tap()
+        XCTAssertFalse(filename.waitForExistence(timeout: 5))
+    }
+    
+    
+    
 }
