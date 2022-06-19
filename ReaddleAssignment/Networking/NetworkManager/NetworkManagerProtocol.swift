@@ -18,6 +18,7 @@ protocol NetworkManagerProtocol {
     ///            or a `RequestError` in case of failure.
     func performRequest<Response>(
         endpoint: Endpoint,
+        requiresAuthorization: Bool,
         responseType: Response.Type?) -> AnyPublisher<Response, Error>
     where Response: Decodable
     
@@ -29,6 +30,7 @@ protocol NetworkManagerProtocol {
     ///            or a `RequestError` in case of failure.
     func performRequest<Payload, Response>(
         endpoint: Endpoint,
+        requiresAuthorization: Bool,
         payload: Payload) -> AnyPublisher<Response, Error>
     where Payload: Encodable, Response: Decodable
 }
