@@ -22,7 +22,7 @@ class ReaddleAssignmentUITests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func testSignInButtonExistsAndUpdatesUIOnSignInOrOut() {
+    func testSignInButtonExistsAndUpdatesUIOnSignInOrOut() throws {
         // Checking existence of sign in button
         let signInButton = app.navigationBars.buttons["sign-in-button"]
         XCTAssert(signInButton.waitForExistence(timeout: 5))
@@ -55,56 +55,49 @@ class ReaddleAssignmentUITests: XCTestCase {
         XCTAssertFalse(addItemButton.isEnabled)
     }
     
+    func testLayoutButtonExistsAndUpdatesUIForLayoutChange() throws {
+        
+        // Check layout is initialized as grid
+        let vFileIcon = app.cells["file-icon-vertical"]
+        XCTAssert(vFileIcon.waitForExistence(timeout: 5))
+        
+        // Check list toggle exists
+        let listToggle = app.navigationBars.buttons["toggle-list-button"]
+        XCTAssert(listToggle.waitForExistence(timeout: 5))
+        // Change layout to list and check list toggle disappears
+        listToggle.tap()
+        XCTAssertFalse(listToggle.waitForExistence(timeout: 5))
+        
+        // Check layout has changed to list
+        XCTAssertFalse(vFileIcon.waitForExistence(timeout: 5))
+        let hFileIcon = app.cells["file-icon-horizontal"]
+        XCTAssert(hFileIcon.waitForExistence(timeout: 5))
+        
+        // Check grid toggle exists
+        let gridToggle = app.navigationBars.buttons["toggle-grid-button"]
+        XCTAssert(gridToggle.waitForExistence(timeout: 5))
+        
+        // Change layout back to grid
+        gridToggle.tap()
+        
+        // Check grid toggle disappears and list toggle reappears
+        XCTAssertFalse(gridToggle.waitForExistence(timeout: 5))
+        XCTAssert(listToggle.waitForExistence(timeout: 5))
+        XCTAssertFalse(hFileIcon.waitForExistence(timeout: 5))
+        XCTAssert(vFileIcon.waitForExistence(timeout: 5))
+    }
+    
 
-    func testUIElementsExistOnLaunch() throws {
+    func testStaticUIElementsExistOnLaunch() throws {
         let header = app.navigationBars["Files"]
-        let layoutToggle = app.navigationBars.buttons["toggle-list-button"]
         let collectionView = app.collectionViews["files-collection-view"]
-        let fileIcon = app.cells["file-icon-vertical"]
         let iconImage = app.images["file-image"]
         let filename = app.staticTexts["file.pdf"]
         
-        
         XCTAssert(header.waitForExistence(timeout: 5))
-        XCTAssert(layoutToggle.waitForExistence(timeout: 5))
         XCTAssert(collectionView.waitForExistence(timeout: 5))
-        XCTAssert(fileIcon.waitForExistence(timeout: 5))
         XCTAssert(iconImage.waitForExistence(timeout: 5))
         XCTAssert(filename.waitForExistence(timeout: 5))
     }
     
-    func testSwitchingLayoutChangesButtonIcon() throws {
-        let listToggle = app.navigationBars.buttons["toggle-list-button"]
-        _ = listToggle.waitForExistence(timeout: 5)
-        
-        listToggle.tap()
-        XCTAssertFalse(listToggle.exists)
-        
-        let gridToggle = app.navigationBars.buttons["toggle-grid-button"]
-        XCTAssert(gridToggle.waitForExistence(timeout: 5))
-        gridToggle.tap()
-        XCTAssertFalse(gridToggle.exists)
-        XCTAssert(listToggle.waitForExistence(timeout: 5))
-    }
-    
-    func testSwitchingLayoutChangesCollectionViewLayout() throws {
-        let listToggle = app.navigationBars.buttons["toggle-list-button"]
-        _ = listToggle.waitForExistence(timeout: 5)
-        
-        let vFileIcon = app.cells["file-icon-vertical"]
-        XCTAssert(vFileIcon.waitForExistence(timeout: 5))
-        listToggle.tap()
-        XCTAssertFalse(vFileIcon.exists)
-        
-        let hFileIcon = app.cells["file-icon-horizontal"]
-        XCTAssert(hFileIcon.waitForExistence(timeout: 5))
-        
-        
-        let gridToggle = app.navigationBars.buttons["toggle-grid-button"]
-        _ = gridToggle.waitForExistence(timeout: 5)
-        gridToggle.tap()
-        
-        XCTAssertFalse(hFileIcon.exists)
-        XCTAssert(vFileIcon.waitForExistence(timeout: 5))
-    }
 }
