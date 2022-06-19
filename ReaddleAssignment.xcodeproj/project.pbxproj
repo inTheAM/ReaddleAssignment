@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		E29FB72B285451AB00E16A96 /* FileTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29FB72A285451AB00E16A96 /* FileTreeViewController.swift */; };
+		E2A02ABE285DA8080063ABD5 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A02ABD285DA8080063ABD5 /* Range.swift */; };
+		E2A02AC1285DAFA60063ABD5 /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A02AC0285DAFA60063ABD5 /* AuthServiceProtocol.swift */; };
+		E2A02AC3285DAFCC0063ABD5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A02AC2285DAFCC0063ABD5 /* AuthService.swift */; };
+		E2A02AC5285DB0810063ABD5 /* SignInError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A02AC4285DB0810063ABD5 /* SignInError.swift */; };
 		E2A9ED792858CB4800A7564C /* MockGoogleSheetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED782858CB4800A7564C /* MockGoogleSheetsService.swift */; };
 		E2A9ED7B2858CB6A00A7564C /* FileItem+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED7A2858CB6A00A7564C /* FileItem+Samples.swift */; };
 		E2A9ED80285995CD00A7564C /* FileTreeRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED7F285995CD00A7564C /* FileTreeRepresentable.swift */; };
-		E2A9ED822859DD7100A7564C /* SpreadsheetUpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED812859DD7100A7564C /* SpreadsheetUpdateData.swift */; };
+		E2A9ED822859DD7100A7564C /* SpreadsheetUpdateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED812859DD7100A7564C /* SpreadsheetUpdateResponse.swift */; };
 		E2A9ED842859DEA500A7564C /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9ED832859DEA500A7564C /* ErrorAlert.swift */; };
+		E2A9ED87285AB7C000A7564C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = E2A9ED86285AB7C000A7564C /* GoogleSignIn */; };
 		E2D0301D284DC19600E6247E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301C284DC19600E6247E /* AppDelegate.swift */; };
 		E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0301E284DC19600E6247E /* SceneDelegate.swift */; };
 		E2D03021284DC19600E6247E /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D03020284DC19600E6247E /* FilesViewController.swift */; };
@@ -33,7 +38,9 @@
 		E2D030642851A49900E6247E /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030632851A49900E6247E /* FileItem.swift */; };
 		E2D030662851A52A00E6247E /* EndpointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030652851A52A00E6247E /* EndpointList.swift */; };
 		E2D030682851A5F800E6247E /* GoogleSheetsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030672851A5F800E6247E /* GoogleSheetsServiceProtocol.swift */; };
-		E2D0306A2851A84C00E6247E /* FilesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D030692851A84C00E6247E /* FilesDetailViewController.swift */; };
+		E2D4521D285E160200ADC148 /* SheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4521C285E160200ADC148 /* SheetError.swift */; };
+		E2D4521F285EEAA600ADC148 /* SpreadsheetClearResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4521E285EEAA600ADC148 /* SpreadsheetClearResponse.swift */; };
+		E2D45221285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D45220285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +62,14 @@
 
 /* Begin PBXFileReference section */
 		E29FB72A285451AB00E16A96 /* FileTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTreeViewController.swift; sourceTree = "<group>"; };
+		E2A02ABD285DA8080063ABD5 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
+		E2A02AC0285DAFA60063ABD5 /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
+		E2A02AC2285DAFCC0063ABD5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		E2A02AC4285DB0810063ABD5 /* SignInError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInError.swift; sourceTree = "<group>"; };
 		E2A9ED782858CB4800A7564C /* MockGoogleSheetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGoogleSheetsService.swift; sourceTree = "<group>"; };
 		E2A9ED7A2858CB6A00A7564C /* FileItem+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileItem+Samples.swift"; sourceTree = "<group>"; };
 		E2A9ED7F285995CD00A7564C /* FileTreeRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTreeRepresentable.swift; sourceTree = "<group>"; };
-		E2A9ED812859DD7100A7564C /* SpreadsheetUpdateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetUpdateData.swift; sourceTree = "<group>"; };
+		E2A9ED812859DD7100A7564C /* SpreadsheetUpdateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetUpdateResponse.swift; sourceTree = "<group>"; };
 		E2A9ED832859DEA500A7564C /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		E2D03019284DC19600E6247E /* ReaddleAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReaddleAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D0301C284DC19600E6247E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +95,9 @@
 		E2D030632851A49900E6247E /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		E2D030652851A52A00E6247E /* EndpointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointList.swift; sourceTree = "<group>"; };
 		E2D030672851A5F800E6247E /* GoogleSheetsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSheetsServiceProtocol.swift; sourceTree = "<group>"; };
-		E2D030692851A84C00E6247E /* FilesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDetailViewController.swift; sourceTree = "<group>"; };
+		E2D4521C285E160200ADC148 /* SheetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetError.swift; sourceTree = "<group>"; };
+		E2D4521E285EEAA600ADC148 /* SpreadsheetClearResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetClearResponse.swift; sourceTree = "<group>"; };
+		E2D45220285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetDeleteRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2A9ED87285AB7C000A7564C /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,10 +131,19 @@
 			children = (
 				E29FB72A285451AB00E16A96 /* FileTreeViewController.swift */,
 				E2D03020284DC19600E6247E /* FilesViewController.swift */,
-				E2D030692851A84C00E6247E /* FilesDetailViewController.swift */,
 				E2D0304E284E906200E6247E /* FileIcon.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E2A02ABF285DAF9B0063ABD5 /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				E2A02AC0285DAFA60063ABD5 /* AuthServiceProtocol.swift */,
+				E2A02AC2285DAFCC0063ABD5 /* AuthService.swift */,
+				E2A02AC4285DB0810063ABD5 /* SignInError.swift */,
+			);
+			path = AuthService;
 			sourceTree = "<group>";
 		};
 		E2A9ED7C2858CE6700A7564C /* Tests */ = {
@@ -207,6 +230,7 @@
 		E2D030522850C6F500E6247E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				E2A02ABF285DAF9B0063ABD5 /* AuthService */,
 				E2D0305D2851A44900E6247E /* GoogleSheetsService */,
 				E2D030592851A2F200E6247E /* NetworkManager */,
 				E2D0305A2851A2FE00E6247E /* Endpoint */,
@@ -238,6 +262,7 @@
 			children = (
 				E2D0305E2851A47100E6247E /* GoogleSheetsService.swift */,
 				E2D030672851A5F800E6247E /* GoogleSheetsServiceProtocol.swift */,
+				E2D4521C285E160200ADC148 /* SheetError.swift */,
 			);
 			path = GoogleSheetsService;
 			sourceTree = "<group>";
@@ -246,9 +271,12 @@
 			isa = PBXGroup;
 			children = (
 				E2D030612851A48F00E6247E /* SpreadsheetData.swift */,
-				E2A9ED812859DD7100A7564C /* SpreadsheetUpdateData.swift */,
+				E2A9ED812859DD7100A7564C /* SpreadsheetUpdateResponse.swift */,
+				E2D4521E285EEAA600ADC148 /* SpreadsheetClearResponse.swift */,
+				E2D45220285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift */,
 				E2A9ED7F285995CD00A7564C /* FileTreeRepresentable.swift */,
 				E2D030632851A49900E6247E /* FileItem.swift */,
+				E2A02ABD285DA8080063ABD5 /* Range.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,6 +297,9 @@
 			dependencies = (
 			);
 			name = ReaddleAssignment;
+			packageProductDependencies = (
+				E2A9ED86285AB7C000A7564C /* GoogleSignIn */,
+			);
 			productName = ReaddleAssignment;
 			productReference = E2D03019284DC19600E6247E /* ReaddleAssignment.app */;
 			productType = "com.apple.product-type.application";
@@ -341,6 +372,9 @@
 				Base,
 			);
 			mainGroup = E2D03010284DC19600E6247E;
+			packageReferences = (
+				E2A9ED85285AB7C000A7564C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = E2D0301A284DC19600E6247E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -384,17 +418,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2D030662851A52A00E6247E /* EndpointList.swift in Sources */,
+				E2A02AC3285DAFCC0063ABD5 /* AuthService.swift in Sources */,
 				E2A9ED842859DEA500A7564C /* ErrorAlert.swift in Sources */,
-				E2A9ED822859DD7100A7564C /* SpreadsheetUpdateData.swift in Sources */,
+				E2A9ED822859DD7100A7564C /* SpreadsheetUpdateResponse.swift in Sources */,
+				E2D4521D285E160200ADC148 /* SheetError.swift in Sources */,
 				E2D03021284DC19600E6247E /* FilesViewController.swift in Sources */,
 				E2D030682851A5F800E6247E /* GoogleSheetsServiceProtocol.swift in Sources */,
+				E2D45221285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift in Sources */,
 				E2D030582851A2ED00E6247E /* Endpoint.swift in Sources */,
+				E2A02ABE285DA8080063ABD5 /* Range.swift in Sources */,
 				E2A9ED80285995CD00A7564C /* FileTreeRepresentable.swift in Sources */,
 				E2D030622851A48F00E6247E /* SpreadsheetData.swift in Sources */,
 				E2D0305F2851A47100E6247E /* GoogleSheetsService.swift in Sources */,
 				E2D0301D284DC19600E6247E /* AppDelegate.swift in Sources */,
+				E2D4521F285EEAA600ADC148 /* SpreadsheetClearResponse.swift in Sources */,
 				E2D0304F284E906200E6247E /* FileIcon.swift in Sources */,
 				E2D030542850C74E00E6247E /* NetworkManager.swift in Sources */,
+				E2A02AC1285DAFA60063ABD5 /* AuthServiceProtocol.swift in Sources */,
 				E2D0304D284E8AF000E6247E /* FileExplorerLayout.swift in Sources */,
 				E2D03051284E946C00E6247E /* ViewModel.swift in Sources */,
 				E29FB72B285451AB00E16A96 /* FileTreeViewController.swift in Sources */,
@@ -402,7 +442,7 @@
 				E2D030642851A49900E6247E /* FileItem.swift in Sources */,
 				E2D0305C2851A32900E6247E /* Endpoint+MakeURL.swift in Sources */,
 				E2D0301F284DC19600E6247E /* SceneDelegate.swift in Sources */,
-				E2D0306A2851A84C00E6247E /* FilesDetailViewController.swift in Sources */,
+				E2A02AC5285DB0810063ABD5 /* SignInError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +780,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2A9ED85285AB7C000A7564C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2A9ED86285AB7C000A7564C /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2A9ED85285AB7C000A7564C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E2D03011284DC19600E6247E /* Project object */;
 }
