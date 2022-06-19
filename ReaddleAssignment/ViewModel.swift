@@ -35,40 +35,22 @@ final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDel
     
     // MARK: - UICollectionViewDataSource conformance.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if CommandLine.arguments.contains("MockData") {
-            // Return mock data
-            return 1
-        } else {
-            // Return actual data
-            return file.value.children?.count ?? 0
-        }
+            file.value.children?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "icon", for: indexPath) as! FileIcon
         
-        if CommandLine.arguments.contains("MockData") {
-            // Return mock data
+        // Return actual data
+        if let file = file.value.children?[indexPath.item] {
+            let image = file.fileType == .file ? "doc.text" : "folder"
             switch FileExplorerLayout.layoutType {
             case .grid:
-                cell.configure(axis: .vertical, image: "doc.text", name: "file.pdf")
+                cell.configure(axis: .vertical, image: image, name: file.name)
             default:
-                cell.configure(axis: .horizontal, image: "folder", name: "folder")
-            }
-        } else {
-            // Return actual data
-            if let file = file.value.children?[indexPath.item] {
-                let image = file.fileType == .file ? "doc.text" : "folder"
-                switch FileExplorerLayout.layoutType {
-                case .grid:
-                    cell.configure(axis: .vertical, image: image, name: file.name)
-                default:
-                    cell.configure(axis: .horizontal, image: image, name: file.name)
-                }
+                cell.configure(axis: .horizontal, image: image, name: file.name)
             }
         }
-        
-        
         return cell
     }
     
@@ -78,6 +60,14 @@ final class ViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDel
 extension ViewModel {
     /// Fetches the contents of a spreadsheet
     func fetchSpreadsheet() {
+#if DEBUG
+        if CommandLine.arguments.contains("MockData") {
+            let file = FileItem(id: UUID(), range: "A1:D1", name: "file1.pdf", fileType: .file)
+            self.file.send(.root(withChildren: [file]))
+            return
+        }
+#endif
+        
         sheetsService.fetchSpreadsheet()
             .receive(on: RunLoop.main)
             .catch { [weak self] error -> AnyPublisher<[FileItem], Never> in
@@ -98,6 +88,17 @@ extension ViewModel {
     ///   - name: The name of the new file
     ///   - type: The type of the file ie file or folder
     func addNewFileItem(_ name: String, type: FileItem.FileType) {
+        
+        
+#if DEBUG
+        let newTestFile = FileItem(id: UUID(), parentID: file.value.id, range: "A2:D2", name: name, fileType: type, children: nil)
+        if CommandLine.arguments.contains("MockData") {
+            file.value.children?.append(newTestFile)
+            file.send(file.value)
+            return
+        }
+#endif
+        
         // Creating the new file item and assigning a parent folder if one exists
         let newFile: FileItem
         if file.value.id == FileItem.rootDirectoryID {
@@ -125,7 +126,7 @@ extension ViewModel {
                         file.children = [insertedFile]
                     }
                 }
-                print("SENDING FILE", file)
+//                print("SENDING FILE", file)
                 self.file.send(file)
             }
             .store(in: &cancellables)
@@ -134,6 +135,15 @@ extension ViewModel {
     /// Deletes an entry from the current directory and the network spreadsheet
     /// - Parameter index: The index of the file to remove from the current directory.
     func delete(at index: Int) {
+        
+        #if DEBUG
+        if CommandLine.arguments.contains("MockData") {
+            file.value.children?.remove(at: index)
+            file.send(file.value)
+            return
+        }
+        #endif
+        
         guard let itemToDelete = file.value.children?[index] else {
             return
         }
@@ -206,5 +216,7 @@ extension ViewModel {
         isSignedIn.send(authService.user != nil)
     }
 }
+
+
 
 

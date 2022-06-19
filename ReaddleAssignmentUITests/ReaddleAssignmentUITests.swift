@@ -7,13 +7,6 @@
 
 import XCTest
 
-extension XCUIApplication {
-    func launch(withArguments arguments: [String]) {
-        launchArguments = arguments
-        launch()
-    }
-}
-
 class ReaddleAssignmentUITests: XCTestCase {
 
     let app = XCUIApplication()
@@ -102,7 +95,7 @@ class ReaddleAssignmentUITests: XCTestCase {
         let header = app.navigationBars["Files"]
         let collectionView = app.collectionViews["files-collection-view"]
         let iconImage = app.images["file-image"]
-        let filename = app.staticTexts["file.pdf"]
+        let filename = app.staticTexts["file1.pdf"]
         let deleteItem = app.buttons["Delete"]
         
         XCTAssert(header.waitForExistence(timeout: 5))
@@ -123,6 +116,30 @@ class ReaddleAssignmentUITests: XCTestCase {
         let addItemButton = app.navigationBars.buttons["add-item-button"]
         XCTAssert(addItemButton.waitForExistence(timeout: 5))
         XCTAssert(addItemButton.isEnabled)
+    }
+    
+    func testAddingItem() throws {
+        app.launch(withArguments: ["SignedIn", "MockData"])
+        
+        let addItemButton = app.navigationBars.buttons["add-item-button"]
+        XCTAssert(addItemButton.waitForExistence(timeout: 5))
+        
+        addItemButton.tap()
+        
+        let fileTypeSheet = app.sheets["New"]
+        XCTAssert(fileTypeSheet.waitForExistence(timeout: 5))
+        let fileOption = fileTypeSheet.buttons["File"]
+        XCTAssert(fileOption.waitForExistence(timeout: 5))
+        fileOption.tap()
+        
+        let addItemAlert = app.alerts["New file"]
+        XCTAssert(addItemAlert.waitForExistence(timeout: 5))
+        let filenameTextField = addItemAlert.textFields["File name"]
+        XCTAssert(filenameTextField.waitForExistence(timeout: 5))
+        filenameTextField.typeText("file2.pdf")
+        addItemAlert.buttons["OK"].tap()
+        let filename = app.staticTexts["file2.pdf"]
+        XCTAssert(filename.waitForExistence(timeout: 5))
     }
     
 }
