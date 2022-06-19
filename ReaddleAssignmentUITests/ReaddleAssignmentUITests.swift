@@ -92,12 +92,14 @@ class ReaddleAssignmentUITests: XCTestCase {
     func testStaticUIElementsExistOnLaunch() throws {
         app.launch(withArguments: ["MockData"])
         
+        // List static elements
         let header = app.navigationBars["Files"]
         let collectionView = app.collectionViews["files-collection-view"]
         let iconImage = app.images["file-image"]
         let filename = app.staticTexts["file1.pdf"]
         let deleteItem = app.buttons["Delete"]
         
+        // Check for existence
         XCTAssert(header.waitForExistence(timeout: 5))
         XCTAssert(collectionView.waitForExistence(timeout: 5))
         XCTAssert(iconImage.waitForExistence(timeout: 5))
@@ -119,32 +121,51 @@ class ReaddleAssignmentUITests: XCTestCase {
     }
     
     func testAddingItem() throws {
+        // Launch signed in and with mock data
         app.launch(withArguments: ["SignedIn", "MockData"])
         
+        // Checking for the add item button
         let addItemButton = app.navigationBars.buttons["add-item-button"]
         XCTAssert(addItemButton.waitForExistence(timeout: 5))
-        
         addItemButton.tap()
         
+        // Checking for the file type option action sheet.
         let fileTypeSheet = app.sheets["New"]
         XCTAssert(fileTypeSheet.waitForExistence(timeout: 5))
+        
+        // Select file as option
         let fileOption = fileTypeSheet.buttons["File"]
         XCTAssert(fileOption.waitForExistence(timeout: 5))
         fileOption.tap()
         
+        // Check for add item confirmation alert
         let addItemAlert = app.alerts["New file"]
         XCTAssert(addItemAlert.waitForExistence(timeout: 5))
+        
+        // Check for file name textfield
         let filenameTextField = addItemAlert.textFields["File name"]
         XCTAssert(filenameTextField.waitForExistence(timeout: 5))
+        
+        // Type file name and confirm
         filenameTextField.typeText("file2.pdf")
         addItemAlert.buttons["OK"].tap()
+        
+        // Check for new file in collection view
         let filename = app.staticTexts["file2.pdf"]
         XCTAssert(filename.waitForExistence(timeout: 5))
     }
     
+    func testDeletingItemIsDisabledIfUserIsNotSignedIn() throws {
+        app.launch(withArguments: ["MockData"])
+        
+        let filename = app.staticTexts["file1.pdf"]
+        let deleteItem = app.buttons["Delete"]
+        filename.press(forDuration: 1)
+        XCTAssertFalse(deleteItem.waitForExistence(timeout: 5))
+    }
+    
     func testDeletingItem() throws {
         app.launch(withArguments: ["SignedIn", "MockData"])
-        
         
         let filename = app.staticTexts["file1.pdf"]
         let deleteItem = app.buttons["Delete"]

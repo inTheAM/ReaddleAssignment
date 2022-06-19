@@ -197,7 +197,11 @@ extension FileTreeViewController {
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil,attributes: .destructive, state: .off) {  _ in
                 self?.viewModel.delete(at: indexPath.item)
             }
-            return UIMenu(title: "", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [delete])
+            let isSignedIn = self?.viewModel.isSignedIn.value ?? false
+            let children = isSignedIn ? [delete]: []
+            let menu = UIMenu(title: "", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: children)
+            
+            return menu
         }
         return context
     }
