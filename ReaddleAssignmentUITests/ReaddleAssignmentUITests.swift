@@ -22,22 +22,39 @@ class ReaddleAssignmentUITests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func testSignInButtonExistsAndCorrectlyShowsSignInState() {
+    func testSignInButtonExistsAndUpdatesUIOnSignInOrOut() {
+        // Checking existence of sign in button
         let signInButton = app.navigationBars.buttons["sign-in-button"]
         XCTAssert(signInButton.waitForExistence(timeout: 5))
+        
+        // Checking existence of add item button. Should be disabled
+        let addItemButton = app.navigationBars.buttons["add-item-button"]
+        XCTAssert(addItemButton.waitForExistence(timeout: 5))
+        XCTAssertFalse(addItemButton.isEnabled)
+        
+        // Signing in
         signInButton.tap()
         let signInAlert = app.alerts["Sign in to your Google account?"]
         XCTAssert(signInAlert.waitForExistence(timeout: 5))
         signInAlert.buttons["OK"].tap()
+        
+        // Checking add item button is enabled on sign in
+        XCTAssert(addItemButton.isEnabled)
+        
+        // Checking sign in button has changed to sign out
         let signOutButton = app.navigationBars.buttons["sign-out-button"]
         XCTAssert(signOutButton.waitForExistence(timeout: 5))
+        
+        // Signing out
         signOutButton.tap()
         let signOutAlert = app.alerts["Sign out?"]
         XCTAssert(signOutAlert.waitForExistence(timeout: 5))
         signOutAlert.buttons["OK"].tap()
-        let signIn = app.navigationBars.buttons["sign-in-button"]
-        XCTAssert(signIn.waitForExistence(timeout: 5))
+        
+        XCTAssert(signInButton.waitForExistence(timeout: 5))
+        XCTAssertFalse(addItemButton.isEnabled)
     }
+    
 
     func testUIElementsExistOnLaunch() throws {
         let header = app.navigationBars["Files"]
