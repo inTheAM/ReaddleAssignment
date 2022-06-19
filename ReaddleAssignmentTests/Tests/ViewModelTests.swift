@@ -12,7 +12,7 @@ import XCTest
 class ViewModelTests: XCTestCase {
     var viewModel: ViewModel!
     override func setUpWithError() throws {
-        viewModel = ViewModel(file: .rootDirectory, service: MockGoogleSheetsService())
+        viewModel = ViewModel(file: .root(), service: MockGoogleSheetsService())
         dump(viewModel)
     }
 

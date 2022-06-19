@@ -5,7 +5,9 @@
 //  Created by Ahmed Mgua on 19/06/2022.
 //
 
+import Combine
 import Foundation
+import XCTest
 
 extension XCTestCase {
     /// Awaits the result of a publisher and returns the output or throws an error.
