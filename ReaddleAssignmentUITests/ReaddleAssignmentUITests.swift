@@ -90,7 +90,7 @@ class ReaddleAssignmentUITests: XCTestCase {
     
 
     func testStaticUIElementsExistOnLaunch() throws {
-        app.launch(withArguments: ["MockData"])
+        app.launch(withArguments: ["MockData", "SignedIn"])
         
         // List static elements
         let header = app.navigationBars["Files"]
