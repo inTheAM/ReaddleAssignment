@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The content of an alert presented to the user in case of error
 struct ErrorAlert {
     let title: String
     let message: String
@@ -18,6 +19,18 @@ struct ErrorAlert {
             message = "There was a problem fetching files."
         case .failedToAddItem:
             message = "Failed to add item."
+        case .failedToDeleteItem:
+            message = "Failed to delete item."
+        }
+    }
+    
+    init(_ error: SignInError) {
+        title = "Error"
+        switch error {
+        case .scopesMissing:
+            message = "Some authorization scopes are missing.\nEditing is disabled."
+        case .userMissing:
+            message = "User authentication failed."
         }
     }
 }
