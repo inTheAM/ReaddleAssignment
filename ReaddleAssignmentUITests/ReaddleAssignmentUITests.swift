@@ -93,11 +93,14 @@ class ReaddleAssignmentUITests: XCTestCase {
         let collectionView = app.collectionViews["files-collection-view"]
         let iconImage = app.images["file-image"]
         let filename = app.staticTexts["file.pdf"]
+        let deleteItem = app.buttons["Delete"]
         
         XCTAssert(header.waitForExistence(timeout: 5))
         XCTAssert(collectionView.waitForExistence(timeout: 5))
         XCTAssert(iconImage.waitForExistence(timeout: 5))
         XCTAssert(filename.waitForExistence(timeout: 5))
+        filename.press(forDuration: 1)
+        XCTAssert(deleteItem.waitForExistence(timeout: 5))
     }
     
 }
