@@ -43,7 +43,7 @@ extension GoogleSheetsService: GoogleSheetsServiceProtocol {
             .mapError{ _ in
                     .failedToAddItem
             }
-            .map(\SpreadsheetUpdateData.updates)
+            .map(\SpreadsheetUpdateResponse.updates)
             .map { updates in
                 print(updates.updatedRange)
                 let item = FileItem(id: item.id, parentID: item.parentID, range: updates.updatedRange, name: item.name, fileType: item.fileType, children: item.children)
@@ -54,13 +54,13 @@ extension GoogleSheetsService: GoogleSheetsServiceProtocol {
     
     func deleteItem(_ item: FileItem) -> AnyPublisher<Bool, SheetError> {
         let childRanges = item.flattened().map(\.range.a1Notation)
-        let ranges = SpreadsheetDeleteData(ranges: [item.range.a1Notation] + childRanges)
+        let ranges = SpreadsheetDeleteRequest(ranges: [item.range.a1Notation] + childRanges)
         print(ranges)
         return networkManager.performRequest(endpoint: .deleteItem(spreadsheetID), requiresAuthorization: true, payload: ranges)
             .mapError { _ in
                     .failedToFetch
             }
-            .map(\SpreadsheetClearData.clearedRanges.isEmpty)
+            .map(\SpreadsheetClearResponse.clearedRanges.isEmpty)
             .map { !$0 }
             .eraseToAnyPublisher()
     }
