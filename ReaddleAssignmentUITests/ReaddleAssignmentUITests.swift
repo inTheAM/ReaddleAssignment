@@ -7,14 +7,19 @@
 
 import XCTest
 
+extension XCUIApplication {
+    func launch(withArguments arguments: [String]) {
+        launchArguments = arguments
+        launch()
+    }
+}
+
 class ReaddleAssignmentUITests: XCTestCase {
 
     let app = XCUIApplication()
     
     override func setUpWithError() throws {
         continueAfterFailure = false
-        app.launchArguments = ["MockData"]
-        app.launch()
     }
 
     override func tearDownWithError() throws {
@@ -23,6 +28,8 @@ class ReaddleAssignmentUITests: XCTestCase {
     }
     
     func testSignInButtonExistsAndUpdatesUIOnSignInOrOut() throws {
+        app.launch(withArguments: ["MockData"])
+        
         // Checking existence of sign in button
         let signInButton = app.navigationBars.buttons["sign-in-button"]
         XCTAssert(signInButton.waitForExistence(timeout: 5))
@@ -56,6 +63,7 @@ class ReaddleAssignmentUITests: XCTestCase {
     }
     
     func testLayoutButtonExistsAndUpdatesUIForLayoutChange() throws {
+        app.launch(withArguments: ["MockData"])
         
         // Check layout is initialized as grid
         let vFileIcon = app.cells["file-icon-vertical"]
@@ -89,6 +97,8 @@ class ReaddleAssignmentUITests: XCTestCase {
     
 
     func testStaticUIElementsExistOnLaunch() throws {
+        app.launch(withArguments: ["MockData"])
+        
         let header = app.navigationBars["Files"]
         let collectionView = app.collectionViews["files-collection-view"]
         let iconImage = app.images["file-image"]
@@ -101,6 +111,18 @@ class ReaddleAssignmentUITests: XCTestCase {
         XCTAssert(filename.waitForExistence(timeout: 5))
         filename.press(forDuration: 1)
         XCTAssert(deleteItem.waitForExistence(timeout: 5))
+    }
+    
+    func testUIIsCorrectlyConfiguredIfPreviousSignInRestored() throws {
+        app.launch(withArguments: ["SignedIn"])
+        
+        // Checking sign in button has changed to sign out
+        let signOutButton = app.navigationBars.buttons["sign-out-button"]
+        XCTAssert(signOutButton.waitForExistence(timeout: 5))
+        // Checking existence of add item button. Should be disabled
+        let addItemButton = app.navigationBars.buttons["add-item-button"]
+        XCTAssert(addItemButton.waitForExistence(timeout: 5))
+        XCTAssert(addItemButton.isEnabled)
     }
     
 }

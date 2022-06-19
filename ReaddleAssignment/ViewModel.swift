@@ -198,7 +198,7 @@ extension ViewModel {
     
     func validateSignInState() {
 #if DEBUG
-        if CommandLine.arguments.contains("StartSignedIn") {
+        if CommandLine.arguments.contains("SignedIn") {
             isSignedIn.send(true)
             return
         }
