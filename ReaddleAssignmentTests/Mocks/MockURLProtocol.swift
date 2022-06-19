@@ -11,10 +11,14 @@ import Foundation
 import XCTest
 
 class MockURLProtocol: URLProtocol {
+    /// Mocks a URL Response using data provided.
     static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
     
+    /// Stores data under URLs so they can be returned as network responses
     static var testURLs = [URL?: Data]()
     
+    
+    /// URLProtocol conformance
     override class func canInit(with request: URLRequest) -> Bool {
         return true
     }

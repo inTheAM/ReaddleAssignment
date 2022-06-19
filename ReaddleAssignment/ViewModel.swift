@@ -59,6 +59,7 @@ extension ViewModel {
     /// Fetches the contents of a spreadsheet
     func fetchSpreadsheet() {
 #if DEBUG
+        // Return mock data for UI test
         if CommandLine.arguments.contains("MockData") {
             let file = FileItem(id: UUID(), range: "A1:D1", name: "file1.pdf", fileType: .file)
             self.file.send(.root(withChildren: [file]))
@@ -89,6 +90,7 @@ extension ViewModel {
         
         
 #if DEBUG
+        // Return mock data for UI test
         let newTestFile = FileItem(id: UUID(), parentID: file.value.id, range: "A2:D2", name: name, fileType: type, children: nil)
         if CommandLine.arguments.contains("MockData") {
             file.value.children?.append(newTestFile)
@@ -134,6 +136,7 @@ extension ViewModel {
     func delete(at index: Int) {
         
         #if DEBUG
+        // Return mock data for UI test
         if CommandLine.arguments.contains("MockData") {
             file.value.children?.remove(at: index)
             file.send(file.value)
@@ -172,6 +175,7 @@ extension ViewModel {
     /// - Parameter viewController: The view controller to present when sign-in is complete.
     func signIn(presenting viewController: UIViewController) {
 #if DEBUG
+        // Return mock data for UI test
         if CommandLine.arguments.contains("MockData") {
             isSignedIn.send(true)
             return
@@ -191,6 +195,7 @@ extension ViewModel {
     /// Signs out the current user.
     func signOut() {
 #if DEBUG
+        // Return mock data for UI test
         if CommandLine.arguments.contains("MockData") {
             isSignedIn.send(false)
             return
@@ -208,6 +213,8 @@ extension ViewModel {
             .store(in: &cancellables)
     }
     
+    /// Checks that the sign-in state is valid by simply checking if a signed in user exists.
+    /// Use to check that the user is still signed in without querying the api.
     func validateSignInState() {
 #if DEBUG
         if CommandLine.arguments.contains("SignedIn") {
