@@ -159,6 +159,12 @@ extension ViewModel {
     /// Signs in a user using the auth service
     /// - Parameter viewController: The view controller to present when sign-in is complete.
     func signIn(presenting viewController: UIViewController) {
+#if DEBUG
+        if CommandLine.arguments.contains("MockData") {
+            isSignedIn.send(true)
+            return
+        }
+#endif
         authService.signIn(presenting: viewController)
             .catch { error -> AnyPublisher<Bool, Never> in
                 self.error.send(ErrorAlert(error))
@@ -172,6 +178,12 @@ extension ViewModel {
     
     /// Signs out the current user.
     func signOut() {
+#if DEBUG
+        if CommandLine.arguments.contains("MockData") {
+            isSignedIn.send(false)
+            return
+        }
+#endif
         authService.signOut()
             .assign(to: \.isSignedIn.value, on: self)
             .store(in: &cancellables)
@@ -185,6 +197,12 @@ extension ViewModel {
     }
     
     func validateSignInState() {
+#if DEBUG
+        if CommandLine.arguments.contains("StartSignedIn") {
+            isSignedIn.send(true)
+            return
+        }
+#endif
         isSignedIn.send(authService.user != nil)
     }
 }

@@ -122,9 +122,9 @@ class FileTreeViewController: UICollectionViewController {
         let buttonImage = UIImage(systemName: name)?.applyingSymbolConfiguration(config)
         button.setImage(buttonImage, for: .normal)
         button.frame = .init(x: 0, y: 0, width: 40, height: 40)
-        button.accessibilityLabel = "Add a file or folder"
+        button.accessibilityLabel = viewModel.isSignedIn.value ? "Sign out" : "Sign in"
         button.addTarget(self, action: #selector(presentSignInWithGooglePrompt), for: .touchUpInside)
-        button.accessibilityIdentifier = "sign-in-button"
+        button.accessibilityIdentifier = viewModel.isSignedIn.value ? "sign-out-button" : "sign-in-button"
         return button
     }()
     
@@ -324,6 +324,8 @@ extension FileTreeViewController {
         let buttonImage = UIImage(systemName: name)?.applyingSymbolConfiguration(config)
         
         signInButton.setImage(buttonImage, for: .normal)
+        signInButton.accessibilityLabel = isSignedIn ? "Sign out" : "Sign in"
+        signInButton.accessibilityIdentifier = isSignedIn ? "sign-out-button" : "sign-in-button"
         addItemButton.isEnabled = isSignedIn
     }
     

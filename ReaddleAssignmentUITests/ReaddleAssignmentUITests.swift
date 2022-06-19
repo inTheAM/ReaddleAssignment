@@ -21,6 +21,23 @@ class ReaddleAssignmentUITests: XCTestCase {
         app.terminate()
         try super.tearDownWithError()
     }
+    
+    func testSignInButtonExistsAndCorrectlyShowsSignInState() {
+        let signInButton = app.navigationBars.buttons["sign-in-button"]
+        XCTAssert(signInButton.waitForExistence(timeout: 5))
+        signInButton.tap()
+        let signInAlert = app.alerts["Sign in to your Google account?"]
+        XCTAssert(signInAlert.waitForExistence(timeout: 5))
+        signInAlert.buttons["OK"].tap()
+        let signOutButton = app.navigationBars.buttons["sign-out-button"]
+        XCTAssert(signOutButton.waitForExistence(timeout: 5))
+        signOutButton.tap()
+        let signOutAlert = app.alerts["Sign out?"]
+        XCTAssert(signOutAlert.waitForExistence(timeout: 5))
+        signOutAlert.buttons["OK"].tap()
+        let signIn = app.navigationBars.buttons["sign-in-button"]
+        XCTAssert(signIn.waitForExistence(timeout: 5))
+    }
 
     func testUIElementsExistOnLaunch() throws {
         let header = app.navigationBars["Files"]
