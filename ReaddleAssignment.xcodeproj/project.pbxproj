@@ -41,6 +41,7 @@
 		E2D4521D285E160200ADC148 /* SheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4521C285E160200ADC148 /* SheetError.swift */; };
 		E2D4521F285EEAA600ADC148 /* SpreadsheetClearResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4521E285EEAA600ADC148 /* SpreadsheetClearResponse.swift */; };
 		E2D45221285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D45220285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift */; };
+		E2D45224285EECCE00ADC148 /* XCTestCase+Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D45223285EECCE00ADC148 /* XCTestCase+Await.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		E2D4521C285E160200ADC148 /* SheetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetError.swift; sourceTree = "<group>"; };
 		E2D4521E285EEAA600ADC148 /* SpreadsheetClearResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetClearResponse.swift; sourceTree = "<group>"; };
 		E2D45220285EEAB900ADC148 /* SpreadsheetDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetDeleteRequest.swift; sourceTree = "<group>"; };
+		E2D45223285EECCE00ADC148 /* XCTestCase+Await.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Await.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 		E2D03032284DC19A00E6247E /* ReaddleAssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
+				E2D45222285EECB700ADC148 /* Extensions */,
 				E2A9ED7C2858CE6700A7564C /* Tests */,
 				E2A9ED7D2858CE6E00A7564C /* Samples */,
 				E2A9ED7E2858CE7600A7564C /* Mocks */,
@@ -279,6 +282,14 @@
 				E2A02ABD285DA8080063ABD5 /* Range.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E2D45222285EECB700ADC148 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E2D45223285EECCE00ADC148 /* XCTestCase+Await.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2A9ED792858CB4800A7564C /* MockGoogleSheetsService.swift in Sources */,
+				E2D45224285EECCE00ADC148 /* XCTestCase+Await.swift in Sources */,
 				E2A9ED7B2858CB6A00A7564C /* FileItem+Samples.swift in Sources */,
 				E2D03034284DC19A00E6247E /* ViewModelTests.swift in Sources */,
 			);
