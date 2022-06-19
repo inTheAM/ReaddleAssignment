@@ -21,15 +21,6 @@ final class FileExplorerLayout: UICollectionViewFlowLayout {
     /// Determines the layout of collection view cells.
     static private(set) var layoutType = LayoutType.grid
     
-    static var buttonIcon: String {
-        switch layoutType {
-        case .list:
-            return "square.grid.2x2"
-        case .grid:
-            return "list.bullet"
-        }
-    }
-    
     static func toggle() {
         switch layoutType {
         case .grid:
@@ -67,8 +58,7 @@ final class FileExplorerLayout: UICollectionViewFlowLayout {
     
     /// Creates the layout of collection view cells based on layout type and content size.
     override func prepare() {
-        guard attributes.isEmpty,
-              let collectionView = collectionView
+        guard let collectionView = collectionView
         else { return }
         
         let numberOfColumns: Int = Self.layoutType == .grid ? 3 : 1
